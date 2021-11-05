@@ -4,8 +4,11 @@
 
 {% block content %}
 
-<!-- {% for cat in post.categories.all %}
-<a href="#">{{ cat.title }}</a>
-{% endfor %} -->
+<p>First name: {{ user.first_name }}</p>
+<p>Last name: {{ user.last_name }}</p>
+<p>Birth date: {{ user.birth_data }}</p>
+<p>Sex: {{ user.sex }}</p>
+<img src="/media/{{ user.profile_picture }}" alt="">
+
 
 {% endblock content %}

@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
 
 python3 -m venv ../venv/django_portfolio
-echo "virtual environment created in ../venv/django_portfolio ..."
+echo "python virtual environment created to ../venv/django_portfolio ..."
 source ../vevn/django_portfolio/bin/activate
-echo "virtual environment activated ..."
+echo "python virtual environment activated ..."
 pip install -r ../requirements_dev.txt
-echo "requirements installed, now you are ready for running the server ..."
+echo "python requirements installed ..."
+python ../djportfolio/manage.py migrate
+python ../djportfolio/manage.py makemigrations
+"Server database migrated, now you are ready for running the server ..."

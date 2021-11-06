@@ -14,4 +14,8 @@ echo "${green}>>> Python venv is activated.${reset}"
 
 #Run tests
 echo "${green}>>> Runing pytest.${reset}"
-(cd djportfolio; pytest)
+(cd djportfolio; pytest --cov-report=xml)
+
+#Check code coverage
+echo "${green}>>> Checking code coverage report.${reset}"
+(cd scripts; python coverage_checker.py)

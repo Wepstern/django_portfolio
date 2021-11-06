@@ -7,4 +7,5 @@ omit =
     *urls.py,
     *wsgi.py,
     manage.py,
-    asgi.py
+    */asgi.py,
+    */__init__.py

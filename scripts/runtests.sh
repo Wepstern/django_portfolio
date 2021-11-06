@@ -15,7 +15,7 @@ echo "${green}>>> Python venv is activated.${reset}"
 
 #Run tests
 echo "${green}>>> Runing pytest.${reset}"
-(cd djportfolio; pytest)
+(cd djportfolio; pytest --cov-report=html)
 
 #Open results
 echo "${green}>>> Pytest ended, coverage data will be showed in your default browser.${reset}"

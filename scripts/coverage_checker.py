@@ -18,6 +18,8 @@ coverage = int(float(coverage) * 100)
 
 if coverage >= pass_limit:
     print(Fore.GREEN + ">>> You rock man! Code coverage is {}%.".format(pass_limit))
+    print(Fore.RESET)
 else:
     print(Fore.RED + "Code coverage is only {}%.".format(coverage))
+    print(Fore.RESET)
     sys.exit(1)

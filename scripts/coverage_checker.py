@@ -2,6 +2,7 @@ import os
 import sys
 from pathlib import Path
 import xml.etree.ElementTree as ET
+from colorama import Fore, Style
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -16,7 +17,7 @@ coverage = root.attrib['line-rate']
 coverage = int(float(coverage) * 100)
 
 if coverage >= pass_limit:
-    print(">>> Code coverage is {}%.".format(pass_limit * 100))
+    print(Fore.GREEN + ">>> You rock man! Code coverage is {}%.".format(pass_limit))
 else:
-    print("Code coverage is only {}%.".format(coverage))
+    print(Fore.RED + "Code coverage is only {}%.".format(coverage))
     sys.exit(1)

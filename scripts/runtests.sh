@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 
+echo "Activating the python virtual environment ..."
 source ../venv/django_portfolio/bin/activate
-echo "python virtual environment activated ..."
+
+echo "Running pytest ..."
 (cd ../djportfolio; pytest)
-echo "tests ended, coverage data will be opened ..."
+
+echo "Pytest ended, coverage data will be showed in your default browser ..."
 open ../djportfolio/htmlcov/index.html

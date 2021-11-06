@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+echo "Activating the python virtual environment ..."
 source ../venv/django_portfolio/bin/activate
-echo "python virtual environment activated ..."
+
+echo "Starting the server ..."
 python ../djportfolio/manage.py runserver

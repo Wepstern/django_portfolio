@@ -1,9 +1,7 @@
 #!/usr/bin/env bash
 
-echo "activate python virtual environment ..."
-
+echo "Activating the python virtual environment ..."
 source venv/django_portfolio/bin/activate
 
-echo "run pytest ..."
-
+echo "Running pytest ..."
 (cd djportfolio; pytest)

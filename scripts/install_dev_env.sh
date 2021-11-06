@@ -1,11 +1,19 @@
 #!/usr/bin/env bash
 
+echo "Installing python virtual environment to ../venv/django_portfolio ..."
 python3 -m venv ../venv/django_portfolio
-echo "python virtual environment created to ../venv/django_portfolio ..."
+
+echo "Activating the python virtual environment ..."
 source ../vevn/django_portfolio/bin/activate
-echo "python virtual environment activated ..."
+
+echo "Python development environement requirements installation ..."
 pip install -r ../requirements_dev.txt
-echo "python requirements installed ..."
+
+echo "Migrate database ..."
 python ../djportfolio/manage.py migrate
 python ../djportfolio/manage.py makemigrations
-"Server database migrated, now you are ready for running the server ..."
+
+echo "Forcing clien-side git pre-commit and pre-push hooks "
+git config core.hooksPath ../.githooks
+
+echo "Development environment is set"

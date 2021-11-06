@@ -1,19 +1,38 @@
 #!/usr/bin/env bash
 
-echo "Installing python virtual environment to ../venv/django_portfolio ..."
-python3 -m venv ../venv/django_portfolio
+red=`tput setaf 1`
+green=`tput setaf 2`
+reset=`tput sgr0`
 
-echo "Activating the python virtual environment ..."
-source ../vevn/django_portfolio/bin/activate
+#Create venv
+echo "${green}>>> Creating python virtual environment.${reset}"
+cd ..
+mkdir venv
+cd venv
+python3 -m venv django_portfolio
+echo "${green}>>> Python virtual environment is created.${reset}"
 
-echo "Python development environement requirements installation ..."
-pip install -r ../requirements_dev.txt
+#Activate venv
+sleep 2
+echo "${green}>>> Activate the python venv.${reset}"
+source django_portfolio/bin/activate
+PS1="(`basename \"$VIRTUAL_ENV\"`)\e[1;34m:/\W\033[00m$ "
+sleep 2
+echo "${green}>>> Python venv is activated.${reset}"
 
-echo "Migrate database ..."
-python ../djportfolio/manage.py migrate
-python ../djportfolio/manage.py makemigrations
+#Install requirements
+echo "${green}>>> Installing the requirements.${reset}"
+cd ..
+pip install -r requirements_dev.txt
+echo "${green}>>> Requirements are installed.${reset}"
 
-echo "Forcing clien-side git pre-commit and pre-push hooks "
+#Migra database
+echo "${green}>>> Migration the database.${reset}"
+python djportfolio/manage.py migrate
+python djportfolio/manage.py makemigrations
+echo "${green}>>> Database is migrated.${reset}"
+
+#Configure git hooks
+echo "${green}>>> Configuring clien-side git pre-commit and pre-push hooks.${reset}"
 git config core.hooksPath ../.githooks
-
-echo "Development environment is set"
+echo "${green}>>> Clien-side git pre-commit and pre-push hooks are configured.${reset}"

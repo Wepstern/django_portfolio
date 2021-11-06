@@ -1,10 +1,22 @@
 #!/usr/bin/env bash
 
-echo "Activating the python virtual environment ..."
-source ../venv/django_portfolio/bin/activate
+red=`tput setaf 1`
+green=`tput setaf 2`
+reset=`tput sgr0`
 
-echo "Running pytest ..."
-(cd ../djportfolio; pytest)
+#Activate venv
+sleep 2
+echo "${green}>>> Activate the python venv.${reset}"
+cd ..
+source venv/django_portfolio/bin/activate
+PS1="(`basename \"$VIRTUAL_ENV\"`)\e[1;34m:/\W\033[00m$ "
+sleep 2
+echo "${green}>>> Python venv is activated.${reset}"
 
-echo "Pytest ended, coverage data will be showed in your default browser ..."
-open ../djportfolio/htmlcov/index.html
+#Run tests
+echo "${green}>>> Runing pytest.${reset}"
+(cd djportfolio; pytest)
+
+#Open results
+echo "${green}>>> Pytest ended, coverage data will be showed in your default browser.${reset}"
+open djportfolio/htmlcov/index.html

@@ -49,7 +49,9 @@ scripts % ./runserver.sh
 ```
 ## Features
 - [X] Implement code coverage measurement into git hooks
-- [X] Implement ui test cases into git hooks
+- [X] Implement UI tests into git hooks
+- [ ] UI test environment handling / Selenium Webdriver
+- [ ] Implement asserts in UI tests with bitmapchek comparison
 - [ ] Implement statical analysis into git hooks
 - [ ] Separating the pre-commit and pre-push tests by testing levels
 - [ ] Update read me according to the built-in code coverage measurement in git hooks

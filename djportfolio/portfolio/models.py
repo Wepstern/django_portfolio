@@ -6,8 +6,8 @@ from django.core.exceptions import ValidationError
 class User(models.Model):
     first_name = models.CharField(max_length=30, blank=False)
     last_name = models.CharField(max_length=30, blank=False)
-    birth_data = models.DateField(blank=False)
-    profile_picture = models.ImageField(blank=True, default='default.jpg')
+    birth_date = models.DateField(blank=False)
+    profile_picture = models.ImageField(blank=True, default='static/img/default.jpg')
     SEX_CHOICES = (
         ('Female', 'Female',),
         ('Male', 'Male',)

@@ -4,11 +4,10 @@
 
 {% block content %}
 
-<p>First name: {{ user.first_name }}</p>
-<p>Last name: {{ user.last_name }}</p>
-<p>Birth date: {{ user.birth_data }}</p>
-<p>Sex: {{ user.sex }}</p>
-<img src="/media/{{ user.profile_picture }}" alt="">
-
+<p id="firstname">First name: {{ user.first_name }}</p>
+<p id="lastname">Last name: {{ user.last_name }}</p>
+<p id="birthdate">Birth date: {{ user.birth_date|date:'Y-m-d' }}</p>
+<p id="sex">Sex: {{ user.sex }}</p>
+<img id="profilepicture" src="{{ user.profile_picture }}" alt="">
 
 {% endblock content %}

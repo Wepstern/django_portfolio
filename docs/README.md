@@ -48,11 +48,11 @@ Running the server using helper scripts from terminal
 scripts % ./runserver.sh
 ```
 ## Features
-- [X] Building code coverage measurement into git hooks
-- [ ] Update read me according to the built-in code coverage measurement in git hooks
-- [ ] Building statical analysis into git hooks
-- [ ] Building ui tests into git hooks
+- [X] Implement code coverage measurement into git hooks
+- [X] Implement ui test cases into git hooks
+- [ ] Implement statical analysis into git hooks
 - [ ] Separating the pre-commit and pre-push tests by testing levels
+- [ ] Update read me according to the built-in code coverage measurement in git hooks
 - [ ] Forcing tests and code coverage measurement by requirements
 - [ ] Containerise the project
 - [ ] Loading server data during the first initialisation from a yaml file

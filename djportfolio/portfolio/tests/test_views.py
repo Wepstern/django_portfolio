@@ -12,7 +12,7 @@ class TestIndexView(TestCase):
         self.factory = RequestFactory()
         self.user = AnonymousUser()
 
-    def test_anonymus_invalid(self):
+    def test_anonymus_user_in_db_invalid(self):
         request = self.factory.get('/')
         request.user = self.user
 
@@ -21,7 +21,7 @@ class TestIndexView(TestCase):
         except ObjectDoesNotExist as exc:
              assert True, f"Should not be callable without any user. {exc}"
 
-    def test_anonymus_valid(self):
+    def test_anonymus_user_in_db_valid(self):
         obj = mixer.blend('portfolio.User')
         assert obj.pk == 1, 'Should create a user instance'
 

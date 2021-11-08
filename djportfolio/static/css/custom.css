@@ -115,7 +115,8 @@
 }
 
 .navbar{
-  font-family: 'Montserrat-Medium';
+  font-family: 'Montserrat-Bold';
+  font-size: 1.2rem;
 }
 
 .navbar-light .navbar-nav .nav-link {

@@ -22,8 +22,8 @@ class TestIndexView(TestCase):
              assert True, f"Should not be callable without any user. {exc}"
 
     def test_anonymus_user_in_db_valid(self):
-        obj = mixer.blend('portfolio.User')
-        assert obj.pk == 1, 'Should create a user instance'
+        user = mixer.blend('portfolio.User')
+        assert user.pk == 1, 'Should create a user instance'
 
         request = self.factory.get('/')
         request.user = self.user

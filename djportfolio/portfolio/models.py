@@ -8,6 +8,7 @@ class User(models.Model):
     last_name = models.CharField(max_length=30, blank=False)
     birth_date = models.DateField(blank=False)
     profile_picture = models.ImageField(blank=True, default='static/img/default.jpg')
+    profession = models.CharField(max_length=100, blank=False)
     SEX_CHOICES = (
         ('Female', 'Female',),
         ('Male', 'Male',)

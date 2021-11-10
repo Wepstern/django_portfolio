@@ -1,0 +1,133 @@
+Text alignment
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* Button alignment */
+.button-left {
+  float: left;
+}
+
+.button-right {
+  float: right;
+}
+
+.button-center {
+  float: center;
+}
+
+h1 {
+  font-family: 'Montserrat-ExtraBold';
+  color: #FAD826;
+}
+
+h2 {
+  font-family: 'Montserrat-Bold';
+  color: #FAD826;
+}
+
+h3 {
+  font-family: 'Montserrat-Light';
+  color: #FAD826;
+  font-size: 1.25rem;
+}
+
+/* Header */
+
+.header {
+  position: relative;
+  width: 100%;
+  height: auto;
+  min-height: 35rem;
+  padding: 15rem 0;
+  background: linear-gradient(to bottom, rgba(61, 49, 85, 0.5) 0%, rgba(61, 49, 85, 0.9) 75%, #000 100%), url("/static/img/background.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+}
+
+.border-btm {
+  border-bottom: 1px solid;
+  color: #FAD826;
+}
+
+.header .media .bi {
+  color: #FAD826;
+}
+
+.header .bi {
+  color: rgba(61, 49, 85);
+}
+
+.header .btn-primary:hover .bi  {
+  color: #FAD826;
+}
+
+.btn-primary, .btn-primary:active, .btn-primary:visited {
+  background-color: #FAD826;
+  color:rgba(61, 49, 85);
+  border-color: rgba(61, 49, 85);
+}
+
+.btn-primary:hover {
+  color: #FAD826;
+  background-color: #9B786F;
+  border-color: #9D8D8F
+}
+
+.btn-primary:focus,
+.btn-primary.focus {
+    box-shadow: 0 0 0 .2rem #9B786F
+}
+
+/* Navigator */
+#navigator {
+  min-height: 3.5rem;
+}
+
+.navbar{
+  font-family: 'Montserrat-Bold';
+  font-size: 1.2rem;
+}
+
+.navbar-light .navbar-nav .nav-link:focus {
+  color: #FAD826;
+  border-bottom: 1px solid #FAD826;
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+  color: #9B786F;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color:#FAD826;
+}
+
+.navbar-nav > li {
+  float: left;
+  position: relative;
+}
+
+/* About */
+
+.about-section {
+  position: relative;
+  width: 100%;
+  height: auto;
+  min-height: 35rem;
+  padding: 15rem 0;
+  background: linear-gradient(to bottom, rgba(61, 49, 85, 0.5) 0%, rgba(61, 49, 85, 0.9) 75%, #000 100%), url("/static/img/background.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+}

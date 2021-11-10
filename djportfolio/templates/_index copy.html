@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<!-- Navigator -->
+<nav  class="navbar navbar-expand-lg navbar-light fixed-top" id="navigator"">
+    <div class="container-fluid px-5 py-4">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link test-nav-home" href="#home">Home</a></li>
+                <li class="nav-item"><a class="nav-link test-nav-about" href="#about">About</a></li>
+                <li class="nav-item"><a class="nav-link test-nav-expertise" href="#expertise">Expertise</a></li>
+                <li class="nav-item"><a class="nav-link test-nav-experience" href="#experience">Experience</a></li>
+                <li class="nav-item"><a class="nav-link test-nav-education" href="#education">Education</a></li>
+                <li class="nav-item"><a class="nav-link test-nav-contact" href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- Header -->
+<header class="header">
+    <div class="container px-5">
+        <div class="row gx-0 mb-4 mb-lg-5 align-items-center">
+            <div class="col-6">
+                <div class="d-flex justify-content-center">
+                    <div class="text-left">
+                        <div>
+                            <h2 class="py-2">Hello, I am</h1>
+                            <h1 class="py-2 border-btm test-user-name">{{ user.last_name }} {{ user.first_name }}</h2>
+                            <h2 class="py-2 border-btm test-user-profession">{{ user.profession }}</h2> <!-- TODO: user postion to db, fill it, insert templatetag--> 
+                        </div>
+                        <div class="media">
+                            <a href="#"><i class="px-2 py-2 bi bi-facebook"></i></a> <!-- TODO: user media profile to db, fill it, insert templatetag -->
+                            <a href="#"><i class="px-2 py-2 bi bi-linkedin"></i></a> <!-- TODO: user media profile to db, fill it, insert templatetag -->
+                            <a href="#"><i class="px-2 py-2 bi bi-github"></i></a> <!-- TODO: user media profile to db, fill it, insert templatetag -->
+                            <a href="#"><i class="px-2 py-2 bi bi-instagram"></i></a> <!-- TODO: user media profile to db, fill it, insert templatetag -->
+                            <a href="#"><i class="px-2 py-2 bi bi-behance"></i></a> <!-- TODO: user media profile to db, fill it, insert templatetag -->
+                        </div>
+                        <div class="py-4 button-left">
+                            <a class="btn btn-primary" href="#about">View My Portfilio<i class="px-2 py-2 bi bi-chevron-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="d-flex justify-content-center">
+                    <img class="rounded-circle test-user-profile-picture" src="{{ user.profile_picture }}" alt="user's profile picture">
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<section class="about-section" id="about">
+    <div class="container px-5">
+        <div class="d-flex">
+            <div class="text-left">
+                <h2 class="py-1">My Story</h3>
+            </div>
+        </div>
+        <div class="row gx-0 mb-4 mb-lg-5 align-items-center">
+            <div class="col-6">
+                <div class="d-flex justify-content-center">
+                    <div class="text-left">
+                        <div>
+                            <h3 class="py-1">I have been working in the software development industry as a Quality Assurance engineer since 2013. I am a committed advocate of quality, automated testing and DevOps.</h3>
+                            <h3 class="py-1">I believe that the challenges of modern software testing can only be effectively met by highly skilled Quality Assurance engineers who can understand, build and maintain CI/CD processes. Accordingly, I strive to continuously educate myself and experiment with the latest technologies.</h3>
+                            <h3 class="py-1">Since 2018, I have been leading a team of nine testers, whom I have prepared to take on automated testing tasks and implement agile working methods.</h3>    
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="d-flex justify-content-center">
+                    <img class="rounded-circle test-user-profile-picture" src="{{ user.profile_picture }}" alt="user's profile picture">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="about-expertise" id="expertise">
+    <div class="container px-5">
+        <div class="row gx-0 mb-4 mb-lg-5 align-items-center">
+            <div class="col-6">
+                <div class="d-flex justify-content-center">
+                    <div class="text-left">
+                        <h3 class="py-1">I have been working in the software development industry as a Quality Assurance engineer since 2013. I am a committed advocate of quality, automated testing and DevOps.</h3>
+                        <h3 class="py-1">I believe that the challenges of modern software testing can only be effectively met by highly skilled Quality Assurance engineers who can understand, build and maintain CI/CD processes. Accordingly, I strive to continuously educate myself and experiment with the latest technologies.</h3>
+                        <h3 class="py-1">Since 2018, I have been leading a team of nine testers, whom I have prepared to take on automated testing tasks and implement agile working methods.</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="d-flex justify-content-center">
+                    <img class="rounded-circle test-user-profile-picture" src="{{ user.profile_picture }}" alt="user's profile picture">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="about-experience" id="experience"></section>
+<section class="about-education" id="education"></section>
+<section class="about-contact" id="contact"></section>
+
+{% endblock content %}

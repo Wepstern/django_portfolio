@@ -1,0 +1,24 @@
+/* main titles, text, social icon */
+$color-1: #5D536B;
+
+$color-2: #989FCE;
+
+$color-3: #347FC4;
+
+$color-4: #7D6B91;
+
+$color-5: #272838;
+
+$theme-colors: (
+  "primary": $color-3,
+  "secondary": $color-4
+);
+
+$navbar-dark-color:         $color-3;
+$navbar-dark-hover-color:   $color-4;
+
+$body-bg:#272838;
+
+@import "../bootstrap/node_modules/bootstrap/scss/bootstrap";
+
+@import "../bootstrap-icons/node_modules/bootstrap-icons/font/bootstrap-icons.css";

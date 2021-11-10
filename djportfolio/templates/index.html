@@ -4,60 +4,251 @@
 
 {% block content %}
 <!-- Navigator -->
-<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="navigator">
-    <div class="container-fluid px-5 py-4">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link test-nav-home" href="#home">Home</a></li>
-                <li class="nav-item"><a class="nav-link test-nav-about" href="#about">About</a></li>
-                <li class="nav-item"><a class="nav-link test-nav-expertise" href="#expertise">Expertise</a></li>
-                <li class="nav-item"><a class="nav-link test-nav-experience" href="#experience">Experience</a></li>
-                <li class="nav-item"><a class="nav-link test-nav-education" href="#education">Education</a></li>
-                <li class="nav-item"><a class="nav-link test-nav-contact" href="#contact">Contact</a></li>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="#home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#expertise">Expertise</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#experience">Experience</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#education">Education</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Contact</a>
+                </li>
             </ul>
         </div>
     </div>
 </nav>
 <!-- Header -->
 <header class="header">
-    <div class="container px-5">
+    <div class="container-fluid justify-content-md-center">
         <div class="row gx-0 mb-4 mb-lg-5 align-items-center">
             <div class="col-6">
-                <div class="d-flex justify-content-center">
+                <!-- <div class="d-flex justify-content-center"> TODO: d-flex? -->
+                <div>
                     <div class="text-left">
                         <div>
-                            <h2 class="py-2">Hello, I am</h1>
-                            <h1 class="py-2 border-btm test-user-name">{{ user.last_name }} {{ user.first_name }}</h2>
-                            <h2 class="py-2 border-btm test-user-profession">{{ user.profession }}</h2> <!-- TODO: user postion to db, fill it, insert templatetag--> 
+                            <h2 class="text-primary">Hello, I am</h1>
+                            <h1 class="text-primary">{{ user.last_name }} {{ user.first_name }}</h2>
+                            <h2 class="text-primary">{{ user.profession }}</h2>
                         </div>
-                        <div class="media">
-                            <a href="#"><i class="px-2 py-2 bi bi-facebook"></i></a> <!-- TODO: user media profile to db, fill it, insert templatetag -->
-                            <a href="#"><i class="px-2 py-2 bi bi-linkedin"></i></a> <!-- TODO: user media profile to db, fill it, insert templatetag -->
-                            <a href="#"><i class="px-2 py-2 bi bi-github"></i></a> <!-- TODO: user media profile to db, fill it, insert templatetag -->
-                            <a href="#"><i class="px-2 py-2 bi bi-instagram"></i></a> <!-- TODO: user media profile to db, fill it, insert templatetag -->
-                            <a href="#"><i class="px-2 py-2 bi bi-behance"></i></a> <!-- TODO: user media profile to db, fill it, insert templatetag -->
+                        <div>
+                            <a href="#"><i class="bi bi-facebook"></i></a> <!-- TODO: user media profile to db, fill it, insert templatetag -->
+                            <a href="#"><i class="bi bi-linkedin"></i></a> <!-- TODO: user media profile to db, fill it, insert templatetag -->
+                            <a href="#"><i class="bi bi-github"></i></a> <!-- TODO: user media profile to db, fill it, insert templatetag -->
+                            <a href="#"><i class="bi bi-instagram"></i></a> <!-- TODO: user media profile to db, fill it, insert templatetag -->
+                            <a href="#"><i class="bi bi-behance"></i></a> <!-- TODO: user media profile to db, fill it, insert templatetag -->
                         </div>
-                        <div class="py-4 button-left">
-                            <a class="btn btn-primary" href="#about">View My Portfilio<i class="px-2 py-2 bi bi-chevron-right"></i></a>
+                        <div class="button-left">
+                            <a class="btn btn-primary" href="#about">
+                                View My Portfilio <i class="bi bi-chevron-right"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-6">
-                <div class="d-flex justify-content-center">
-                    <img class="rounded-circle test-user-profile-picture" src="{{ user.profile_picture }}" alt="user's profile picture">
+                <!-- <div class="d-flex justify-content-center"> TODO: d-flex? -->
+                <div>
+                    <div>
+                        <img src="{{ user.profile_picture }}" class="rounded float-left" alt="User Profile Picture">
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </header>
-<section class="about-section" id="#about"></section>
-<section class="about-expertise" id="#expertise"></section>
-<section class="about-experience" id="#experience"></section>
-<section class="about-education" id="#education"></section>
-<section class="about-contact" id="#contact"></section>
+<!-- Sections About -->
+<section>
+    <div class="container-fluid justify-content-md-center">
+        <div class="row gx-0 mb-4 mb-lg-5 align-items-center">
+            <div>
+                <h2 class="text-primary">My Story</h2>
+            </div>
+            <div class="col-6">
+                <div class="d-flex justify-content-center">
+                    <div class="text-left">
+                        {% for story in user.story.all %}
+                        <div class="py-4 text-secondary">{{ story.text }}</div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <!-- <div class="d-flex justify-content-center"> TODO: d-flex? -->
+                <div>
+                    <div>
+                        <img src="{{ user.profile_picture }}" class="rounded float-left" alt="User Profile Picture">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Sections Expertise -->
+<section>
+    <div class="container-fluid justify-content-md-center">
+        <div class="row gx-0 mb-4 mb-lg-5 align-items-center">
+            <div>
+                <h2 class="text-primary">Expertise</h2>
+            </div>
+            <div class="row text-center align-items-center">
+                {% for expertise in user.expertise.all %}
+                <div class="col justify-content-md-center">
+                    <h3 class="text-primary">{{ expertise.name }}</h3>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="row text-center">
+                {% for expertise in user.expertise.all %}
+                <div class="col justify-content-md-center text-secondary">{{ expertise.description }}</div>
+                {% endfor %}
+            </div>
+            <div class="row">
+                {% for skill in user.skill.all %}
+                {% if forloop.counter|divisibleby:2 %}
+                <div class="col-6">
+                    <div>
+                        <h4 class="text-primary">{{ skill.name }}</h4>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: {{ skill.percentage }}%" aria-valuenow="{{ skill.percentage }}" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+                {% else %}
+                <div class="col-6">
+                    <div>
+                        <h4 class="text-primary">{{ skill.name }}</h4>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: {{ skill.percentage }}%" aria-valuenow="{{ skill.percentage }}" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Sections Experience -->
+<section>
+    <div class="container-fluid justify-content-md-center">
+        <div class="row gx-0 mb-4 mb-lg-5 align-items-center">
+            <div>
+                <h2 class="text-primary">Work Experience</h2>
+            </div>
+            <div class="row">
+                {% for job in user.job.all %}
+                <div class="col-3">
+                    <div class="d-flex" style="height: 100%;">
+                        <div class="timeline">
+                            <div class="timeline__component"></div>
+                            <div class="timeline__middle">
+                                <div class="timeline__point"></div>
+                            </div>
+                            <div class="timeline__component"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-9">
+                    <div class="row">
+                        <div class="col-4">
+                            {% if job.current is True%}
+                            <div class="text-primary">{{ job.work_from }} - </div>
+                            {% else %}
+                            <div class="text-primary">{{ job.work_from }} - {{ job.work_till }}</div>
+                            {% endif %}
+                            <div>
+                                <h3 class="text-primary">{{ job.position }}</h3>
+                                <h5 class="text-primary">{{ job.company }}</h5>
+                            </div>
+                        </div>
+                        <div class="col-8">
+                            {% for task in job.task.all %}
+                            <p class="timeline__paragraph text-secondary">{{ task.description }}</p>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>    
+</section>
+<!-- Sections Education -->
+<section>
+    <section>
+        <div class="container-fluid justify-content-md-center">
+            <div class="row gx-0 mb-4 mb-lg-5 align-items-center">
+                <div>
+                    <h2 class="text-primary">Education and Courses</h2>
+                </div>
+                    {% for certificate in user.certificate.all %}
+                    <div class="row">
+                        <div class="col-6">
+                            {% if certificate.current is True%}
+                            <div class="text-primary">{{ certificate.study_from }} - </div>
+                            {% elif certificate.study_till != None %}
+                            <div class="text-primary">{{ certificate.study_from }} - {{ certificate.study_till }}</div>
+                            {% else %}
+                            <div class="text-primary">{{ certificate.study_from }}</div>
+                            {% endif %}
+                            <h3 class="timeline__title text-primary">{{ certificate.certificate }}</h3>
+                        </div>
+                        <div class="col-6">
+                            {% for study in certificate.study.all %}
+                            <p class="timeline__paragraph text-secondary">{{ study.description }}</p>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>    
+    </section>
+</section>
+<!-- Sections Contact -->
+<section>
+    <div class="container-fluid justify-content-md-center">
+        <div class="row gx-0 mb-4 mb-lg-5 align-items-center">
+            <div>
+                <h2 class="text-primary">Contact</h2>
+            </div>
+            <form>
+                <div class="form-group text-secondary">
+                <label for="exampleFormControlInput1">Email address</label>
+                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                </div>
+                <div class="form-group text-secondary">
+                <label for="exampleFormControlTextarea1">Example textarea</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</section>
 
+<!-- <div class="card text-left text-black bg-white">
+    <div class="card-body">
+        <h5 class="card-title">Special title treatment</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    </div>
+</div>     -->
 {% endblock content %}

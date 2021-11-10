@@ -59,7 +59,7 @@ scripts % ./runserver.sh
 - [X] Blog
 - [X] Contact
 - [ ] UI iterateion
-- [ ] Load user data from yaml
+- [ ] Loading server data during the first initialisation from a yaml file
 - [ ] Build process
 - [ ] UI test environment handling / Selenium Webdriver
 - [ ] Implement asserts in UI tests with bitmapchek comparison
@@ -68,6 +68,3 @@ scripts % ./runserver.sh
 - [ ] Update read me according to the built-in code coverage measurement in git hooks
 - [ ] Forcing tests and code coverage measurement by requirements
 - [ ] Containerise the project
-- [ ] Loading server data during the first initialisation from a yaml file
-
-

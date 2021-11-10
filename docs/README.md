@@ -50,6 +50,8 @@ scripts % ./runserver.sh
 ## Features
 - [X] Implement code coverage measurement into git hooks
 - [X] Implement UI tests into git hooks
+- [X] Skeleton page
+- [ ] Build process
 - [ ] UI test environment handling / Selenium Webdriver
 - [ ] Implement asserts in UI tests with bitmapchek comparison
 - [ ] Implement statical analysis into git hooks

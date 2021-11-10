@@ -50,7 +50,16 @@ scripts % ./runserver.sh
 ## Features
 - [X] Implement code coverage measurement into git hooks
 - [X] Implement UI tests into git hooks
+- [X] Models
 - [X] Skeleton page
+- [X] Home section
+- [X] About section
+- [X] Resume
+- [X] Projects
+- [X] Blog
+- [X] Contact
+- [ ] UI iterateion
+- [ ] Load user data from yaml
 - [ ] Build process
 - [ ] UI test environment handling / Selenium Webdriver
 - [ ] Implement asserts in UI tests with bitmapchek comparison
@@ -60,10 +69,5 @@ scripts % ./runserver.sh
 - [ ] Forcing tests and code coverage measurement by requirements
 - [ ] Containerise the project
 - [ ] Loading server data during the first initialisation from a yaml file
-- [ ] Home section
-- [ ] About section
-- [ ] Resume
-- [ ] Projects
-- [ ] Blog
-- [ ] Contact
+
 

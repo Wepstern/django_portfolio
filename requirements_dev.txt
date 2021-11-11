@@ -41,7 +41,7 @@ pyparsing==2.4.7
 pytest==6.2.5
 pytest-cov==3.0.0
 pytest-django==4.4.0
-pytest-ipdb==0.1
+git+git://github.com/mverteuil/pytest-ipdb.git
 pytest-reporter==0.4.0
 python-dateutil==2.8.2
 pytz==2021.3

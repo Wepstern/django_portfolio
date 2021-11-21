@@ -47,7 +47,7 @@ Running the server using helper scripts from terminal
 ```bash
 scripts % ./runserver.sh
 ```
-## Features
+## Features & Bugs
 - [X] Implement code coverage measurement into git hooks
 - [X] Implement UI tests into git hooks
 - [X] Models
@@ -59,6 +59,15 @@ scripts % ./runserver.sh
 - [X] Blog
 - [X] Contact
 - [ ] UI iterateion
+    - [ ] View my resume function (ui, update user model, routing)
+    - [ ] Expertise (importing svg files, extending expertise model with education model, iterating expertise display, sensitive breakpoints in case expertise name and icon are too long)
+    - [ ] Spacing between sections
+    - [ ] Implement different Node modules + Django build process for dev and prod environment
+    - [ ] Introduction of different Node + Django build processes for the dev and prod environment, update of gitignore, readme and helper scripts to the new processes
+    - [ ] Extend models with projects
+    - [ ] Introduce non-featured project
+    - [ ] Navbar blur effect does not work in Safari
+    - [ ] Built in CMS possibilities
 - [ ] Loading server data during the first initialisation from a yaml file
 - [ ] Build process
 - [ ] UI test environment handling / Selenium Webdriver

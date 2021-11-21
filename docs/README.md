@@ -1,4 +1,4 @@
-# Django Portfolio Page
+# Portfolio Website with Django
 This project is a one page website where you can share your resume, blog posts and previous projects.
 
 ## Development environment

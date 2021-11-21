@@ -1,5 +1,5 @@
 # Portfolio Website with Django
-This project is a simple one-page website written in Django where you can share your resume, projects and expertise. The project relies on Bootstrap on the frontend side and the pytest framework on the testing side.
+This project is a simple one-page website written in Django where you can share your resume, projects and expertise. The project relies on Bootstrap on the frontend side and the Pytest framework on the testing side.
 
 Currently the page can be loaded with data via the Django builtin admin site, but in the future I would like to enable this directly via a dedicated admin site where the uploaded data and the result of the page formatting can be seen immediately.
 

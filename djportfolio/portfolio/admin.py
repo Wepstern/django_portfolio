@@ -1,14 +1,17 @@
 from django.contrib import admin
-from .models import User, Story, Expertise, Skill, Task, Job, Study, Certificate, Topic, Project
+from .models import CertificateAuthority, Company, Task, Skill, Certificate, Category, Profession, Job, UserStory, Introduction, Expertise, User, Project
 
 # Register your models here.
-admin.site.register(User)
-admin.site.register(Story)
-admin.site.register(Expertise)
-admin.site.register(Skill)
+admin.site.register(CertificateAuthority)
+admin.site.register(Company)
 admin.site.register(Task)
-admin.site.register(Job)
-admin.site.register(Study)
+admin.site.register(Skill)
 admin.site.register(Certificate)
-admin.site.register(Topic)
+admin.site.register(Category)
+admin.site.register(Profession)
+admin.site.register(Job)
+admin.site.register(UserStory)
+admin.site.register(Introduction)
+admin.site.register(Expertise)
+admin.site.register(User)
 admin.site.register(Project)

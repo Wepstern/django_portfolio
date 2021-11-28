@@ -1,90 +1,138 @@
 from django.db import models
 from django.core.exceptions import ValidationError
 from django.core.validators import MaxValueValidator, MinValueValidator
-from django.db.models.deletion import CASCADE
+from django.db.models.deletion import CASCADE, PROTECT
 
-# Create your models here.
+class User (models.Model):
+    first_name = models.CharField(max_length=100, blank=False)
+    last_name = models.CharField(max_length=100, blank=False)
+    birth_date = models.DateField(blank=False)
+    profile_picture = models.ImageField(blank=False)
+    SEX_CHOICES = (
+        ('Female', 'Female',),
+        ('Male', 'Male',)
+    )
+    sex = models.CharField(max_length=6, choices=SEX_CHOICES, blank=False)
+    facebook = models.URLField(max_length = 200, blank=True)
+    linkedin = models.URLField(max_length = 200, blank=True)
+    github = models.URLField(max_length = 200, blank=True)
+    instagram = models.URLField(max_length = 200, blank=True)
+    behance = models.URLField(max_length=254, blank=True)
+    email = models.EmailField(max_length=254, blank=True)
 
-class Story(models.Model):
-    text = models.TextField(max_length=5000, blank=False, default='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.') #TODO: remove default
+    def save(self, *args, **kwargs):
+        '''This function validate that there is only one user in the database.'''
+        if not self.pk and User.objects.exists():
+            raise ValidationError('There is can be only one User instance.')
+        return super(User, self).save(*args, **kwargs)
 
-class Expertise(models.Model):
-    name = models.CharField(max_length=30, blank=False)
-    description = models.TextField(max_length=5000, blank=False, default='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.') #TODO: remove default
+    def __str__(self):
+        return self.first_name + " " + self.last_name
+
+class CertificateAuthority(models.Model):
+    name = models.CharField(max_length=100, blank=False)
+    
+    def __str__(self):
+        return self.name
+
+class Company(models.Model):
+    name = models.CharField(max_length=100, blank=False)
+
+    def __str__(self):
+        return self.name
+
+class Task(models.Model):
+    name = models.CharField(max_length=100, blank=False)
+    description = models.TextField(max_length=1000, blank=False)
+
+    def __str__(self):
+        return self.name
 
 class Skill(models.Model):
-    name = models.CharField(max_length=30, blank=False, default='Black Magic')
+    name = models.CharField(max_length=100, blank=False)
+
+    def __str__(self):
+        return self.name
+
+class Certificate(models.Model):
+    name = models.CharField(max_length=100, blank=False)
+    study_from = models.DateField(blank=True, null=True)
+    study_till =models.DateField(blank=True, null=True)
+    certificate_authority = models.ForeignKey(CertificateAuthority, on_delete=models.PROTECT)
+
+    def __str__(self):
+        return self.name
+
+class Category(models.Model):
+    name = models.CharField(max_length=100, blank=False)
+
+    def __str__(self):
+        return self.name
+
+class Profession(models.Model):
+    user = models.ForeignKey(User, on_delete=CASCADE)
+    name = models.CharField(max_length=100, blank=False)
+
+    def __str__(self):
+        return self.name
+
+class Job(models.Model):
+    user = models.ForeignKey(User, on_delete=CASCADE)
+    position = models.CharField(max_length=100, blank=False)
+    work_from = models.DateField(blank=False)
+    work_till =models.DateField(blank=True, null=True)
+    company = models.ForeignKey(Company, on_delete=models.PROTECT)
+    task = models.ManyToManyField(Task)
+
+    class Meta:
+        ordering = ["-work_from"]
+
+    def __str__(self):
+        return self.position + " at " + self.company.name
+
+class UserStory (models.Model):
+    user = models.OneToOneField(User, on_delete=CASCADE, blank=True)
+    quote = models.CharField(max_length=50, blank=False)
+    short_introduction = models.TextField(max_length=500, blank=False)
+
+    def __str__(self):
+        return self.quote
+
+class Introduction (models.Model):
+    user = models.ForeignKey(User, on_delete=CASCADE, blank=True)
+    quote = models.CharField(max_length=50, blank=False)
+    description = models.TextField(max_length=500, blank=False)
+
+    def __str__(self):
+        return self.quote
+
+class Expertise (models.Model):
+    user = models.ForeignKey(User, on_delete=CASCADE, blank=True)
+    skill = models.ForeignKey(Skill, on_delete=models.PROTECT)
+    description = models.TextField(max_length=1000, blank=False)
     percentage = models.IntegerField(blank=False, default=60, 
     validators = [
         MaxValueValidator(100),
         MinValueValidator(0)
     ])
-class Task(models.Model):
-    description = models.TextField(max_length=1000, blank=False, default='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.') #TODO: remove default
+    certificate = models.ManyToManyField(Certificate, blank=True)
 
-class Job(models.Model):
-    work_from = models.DateField(blank=False)
-    work_till = models.DateField(blank=True)
-    position = models.CharField(max_length=30, blank=False)
-    company = models.CharField(max_length=30, blank=False)
-    task = models.ManyToManyField(Task)
-    current = models.BooleanField(blank=False, default=False)
+    def __str__(self):
+        return "Expertise in " + self.skill.name
 
-    class Meta:
-        ordering = ['-work_from']
-
-class Study(models.Model):
-    description = models.TextField(max_length=1000, blank=False, default='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.') #TODO: remove default
-
-class Certificate(models.Model):
-    study_from = models.DateField(blank=False)
-    study_till =models.DateField(blank=True, null=True)
-    certificate = models.CharField(max_length=100, blank=False)
-    authority = models.CharField(max_length=100, blank=False)
-    study = models.ManyToManyField(Study)
-    current = models.BooleanField(blank=False, default=False)
-
-    class Meta:
-        ordering = ['-study_from']
-
-class Topic(models.Model):
-    name = models.TextField(max_length=50)
-
-    class Meta:
-        ordering = ['name']
-
-class Project(models.Model):
-    featured = models.BooleanField(blank=False, default=False)
+class Project (models.Model):
+    author = models.ForeignKey(User, on_delete=models.PROTECT)
+    title = models.CharField(max_length=100, blank=False)
+    featured = models.BooleanField(blank=False)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
-    title = models.CharField(max_length=50)
-    description = models.CharField(max_length=1000)
-    preview_image = models.ImageField(blank=True, default='static/img/default.jpg') #TODO: remove default
-    topic = models.ManyToManyField(Topic)
-
-class User(models.Model):
-    first_name = models.CharField(max_length=30, blank=False)
-    last_name = models.CharField(max_length=30, blank=False)
-    birth_date = models.DateField(blank=False)
-    profile_picture = models.ImageField(blank=True, default='static/img/default.jpg') #TODO: remove default
-    profession = models.CharField(max_length=100, blank=False)
-    story = models.ManyToManyField(Story)
-    expertise = models.ManyToManyField(Expertise)
+    description = models.TextField(max_length=1000, blank=False)
+    preview_image = models.ImageField(blank=True)
     skill = models.ManyToManyField(Skill)
-    job = models.ManyToManyField(Job)
-    certificate = models.ManyToManyField(Certificate)
-    SEX_CHOICES = (
-        ('Female', 'Female',),
-        ('Male', 'Male',)
-    )
-    sex = models.CharField(
-        max_length=6,
-        choices=SEX_CHOICES,
-    )
-    project = models.ManyToManyField(Project)
-    
-    # there can be only one user
-    def save(self, *args, **kwargs):
-        if not self.pk and User.objects.exists():
-            raise ValidationError('There is can be only one User instance.')
-        return super(User, self).save(*args, **kwargs)
+    category = models.ManyToManyField(Category)
+
+    class Meta:
+        ordering = ["-created"]
+
+    def __str__ (self):
+        return self.title + " by " + self.author.__str__()

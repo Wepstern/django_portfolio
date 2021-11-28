@@ -1,0 +1,22 @@
+<header class="header py-5">
+    <div class="container-fluid justify-content-md-center py-5">
+        <div class="row gx-0 mb-4 mb-lg-5 align-items-center">
+            <div class="text-left">
+                <div>
+                    <h4 class="pb-1 text-altprimary">Hello, I am</h4>
+                    <!-- USER NAME -->
+                    <h1 class="text-altlight">{{ user.first_name }} {{ user.last_name }}.</h2>
+                    {% for user_story in user_story.all %}
+                        <!-- USER QUOTE -->
+                        <h1 class="pb-1 text-altsecondary">{{ user_story.quote }}</h1>
+                        <!-- USER SHORT INTRODUCTION -->
+                        <p class="text-altsecondary w-50">{{ user_story.short_introduction }}</p>
+                    {% empty %}
+                    <div class="text-warning">No user story has been created yet. Create an user story!</div>
+                    {% endfor %}
+                </div>
+                <a class="btn btn-outline-altprimary" href="#about" role="button">View My Portfilio<i class="bi bi-chevron-right"></i></a>
+            </div>
+        </div>
+    </div>
+</header>

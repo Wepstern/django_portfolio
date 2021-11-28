@@ -1,0 +1,25 @@
+<section class="section py-5" id="about">
+    <div class="container-fluid justify-content-md-center py-5">
+        <div>
+            <h1 class="text-altlight"><span class="text-altprimary">01. </span>My Story</h1>
+        </div>
+        <div class="row gx-0 mb-4 mb-lg-5 align-items-center py-5">
+            <div class="col-md-6">
+                <div class="d-flex justify-content-center">
+                    <div class="text-left text-altsecondary">
+                        {% for introduction in introductions.all %}
+                        <div class="py-2">{{ introduction.description }}</div>
+                        {% empty %}
+                        <div class="text-warning">No introduction has been created yet. Create an introduction!</div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="text-center">
+                    <img src="{{ user.profile_picture.url }}" class="float-left rounded-circle gs-filter" id="userProfilePicture" alt="User Profile Picture">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

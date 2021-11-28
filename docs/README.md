@@ -80,7 +80,10 @@ scripts % ./runserver.sh
     - [ ] Spacing between sections
     - [ ] Implement different Node modules + Django build process for dev and prod environment
     - [ ] Introduction of different Node + Django build processes for the dev and prod environment, update of gitignore, readme and helper scripts to the new processes
-    - [ ] Extend models with projects
+    - [X] Rebuild from zero model classes for multiple user handling
+    - [X] Extend expertise with certificates
+    - [X] Extend models with projects
+    - [X] Display warnings about empty fields on UI
     - [ ] Introduce non-featured project
     - [ ] Navbar blur effect does not work in Safari
     - [ ] Built in CMS possibilities

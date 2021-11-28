@@ -1,0 +1,64 @@
+<section class="section py-5" id="experience">
+    <div class="container-fluid justify-content-md-center py-5">
+        <div>
+            <h1 class="text-altlight"><span class="text-altprimary">02. </span>Work Experience<a class="btn btn-outline-altprimary" href="#" role="button">View My Resume<i class="bi bi-chevron-right"></i></a>
+            </h1>       
+        </div>
+        <div class="gx-0 mb-4 mb-lg-5 align-items-center py-5">
+            <div class="d-flex align-items-start">
+                <!-- NAVPILLS ON LEFT SIDE FOR JOB TITLE -->
+                <div class="nav flex-column nav-pills mb-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                {% for job in jobs.all %}
+                    {% if forloop.first %}                           
+                    <button class="nav-link experience active" id="v-pills-{{ job.pk }}-tab" data-bs-toggle="pill" data-bs-target="#v-pills-{{ job.pk }}" type="button" role="tab" aria-controls="v-pills-{{ job.pk }}" aria-selected="true">{{ job.position }}</button>
+                    {% else %}
+                    <button class="nav-link experience" id="v-pills-{{ job.pk }}-tab" data-bs-toggle="pill" data-bs-target="#v-pills-{{ job.pk }}" type="button" role="tab" aria-controls="v-pills-{{ job.pk }}" aria-selected="false">{{ job.position }}</button>
+                    {% endif %}
+                {% empty %}
+                <div class="text-warning">No job experience has been created yet. Create a job experience!</div>
+                {% endfor %}
+                </div>
+                <!-- NAVPILLS CONTENT ON RIGHT SIDE FOR JOB DESCRIPTION -->
+                <div class="tab-content" id="v-pills-tabContent">
+                {% for job in jobs.all %}
+                    {% if forloop.first %}
+                    <div class="tab-pane fade show active pt-3" id="v-pills-{{ job.pk }}" role="tabpanel" aria-labelledby="v-pills-{{ job.pk }}-tab">
+                        <div class="container-fluid">
+                            <div class="">
+                                <div class="pb-1 text-altsecondary">{{ job.work_from }} - {{ job.work_till|default_if_none:"" }}</div>
+                                <div>
+                                    <h3 class="pb-1 text-altprimary">{{ job.position }}</h3>
+                                    <h4 class="pb-4 text-altsecondary">{{ job.company }}</h5>
+                                </div>
+                            </div>
+                            <div class="">
+                                {% for task in job.task.all %}
+                                <p class="text-altsecondary"><i class="bi bi-chevron-right text-altprimary py-1"></i>{{ task.description }}</p>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    {% else %}
+                    <div class="tab-pane fade pt-3" id="v-pills-{{ job.pk }}" role="tabpanel" aria-labelledby="v-pills-{{ job.pk }}-tab">
+                        <div class="container-fluid">
+                            <div class="">
+                                <div class="pb-1 text-altsecondary">{{ job.work_from }} - {{ job.work_till|default_if_none:"" }}</div>
+                                <div>
+                                    <h3 class="pb-1 text-altprimary">{{ job.position }}</h3>
+                                    <h4 class="pb-4 text-altsecondary">{{ job.company }}</h5>
+                                </div>
+                            </div>
+                            <div class="">
+                                {% for task in job.task.all %}
+                                <p class="text-altsecondary"><i class="bi bi-chevron-right text-altprimary py-1"></i>{{ task.description }}</p>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+                </div>
+              </div>
+        </div>
+    </div>
+</section>

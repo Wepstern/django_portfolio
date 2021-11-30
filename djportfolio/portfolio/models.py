@@ -135,8 +135,8 @@ class Project (models.Model):
     updated = models.DateTimeField(auto_now=True)
     description = models.TextField(max_length=1000, blank=False)
     preview_image = models.ImageField(blank=True)
-    skill = models.ManyToManyField(Skill)
-    category = models.ManyToManyField(Category)
+    skill = models.ManyToManyField(Skill, blank=True)
+    category = models.ManyToManyField(Category, blank=True)
 
     class Meta:
         ordering = ["-created"]

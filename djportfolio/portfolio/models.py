@@ -29,6 +29,13 @@ class User (models.Model):
     def __str__(self):
         return self.first_name + " " + self.last_name
 
+class Resume(models.Model):
+    user = models.OneToOneField(User, on_delete=CASCADE)
+    path = models.FileField(upload_to='uploads/resume/')
+
+    def __str__(self):
+        return "Resume of " + self.user.__str__()
+
 class CertificateAuthority(models.Model):
     name = models.CharField(max_length=100, blank=False)
     

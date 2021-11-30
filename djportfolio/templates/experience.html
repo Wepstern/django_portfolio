@@ -1,8 +1,14 @@
 <section class="section py-5" id="experience">
     <div class="container-fluid justify-content-md-center py-5">
+        <div class="d-flex">
+            <h1 class="text-altlight"><span class="text-altprimary">02. </span>Work Experience</h1>
+        </div>
         <div>
-            <h1 class="text-altlight"><span class="text-altprimary">02. </span>Work Experience<a class="btn btn-outline-altprimary" href="#" role="button">View My Resume<i class="bi bi-chevron-right"></i></a>
-            </h1>       
+            {% if resume.path|length > 0%}
+            <p class="text-altsecondary py-3">Check my experience below or view my <a class="text-altprimary" href="media/{{ resume.path }}" target="_new">resume</a> here.</p>
+            {% else %}
+            <p class="text-warning py-3">No resume has been uploaded yet. Please upload a resume!</p>
+            {% endif %}
         </div>
         <div class="gx-0 mb-4 mb-lg-5 align-items-center py-5">
             <div class="d-flex align-items-start">
@@ -15,7 +21,9 @@
                     <button class="nav-link experience" id="v-pills-{{ job.pk }}-tab" data-bs-toggle="pill" data-bs-target="#v-pills-{{ job.pk }}" type="button" role="tab" aria-controls="v-pills-{{ job.pk }}" aria-selected="false">{{ job.position }}</button>
                     {% endif %}
                 {% empty %}
-                <div class="text-warning">No job experience has been created yet. Create a job experience!</div>
+                <div>
+                    <p class="text-warning">No job experience has been created yet. Please create a job experience.</p>
+                </div>
                 {% endfor %}
                 </div>
                 <!-- NAVPILLS CONTENT ON RIGHT SIDE FOR JOB DESCRIPTION -->

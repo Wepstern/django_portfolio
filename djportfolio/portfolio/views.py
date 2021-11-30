@@ -1,10 +1,12 @@
 from django.shortcuts import render
 from django.core.exceptions import ObjectDoesNotExist
-from .models import Expertise, Introduction, User, Project, UserStory, Job
+from .models import Expertise, Introduction, User, Project, UserStory, Job, Resume
+from django.http import FileResponse, Http404
 
 def index(request):
     users = User.objects.all()
 
+    #currently only one user can be in the database TODO: Rewrite this sh*tty, temporary workaround.
     if len(users) == 1:
         user = users[0]
     else:
@@ -17,6 +19,14 @@ def index(request):
     jobs = Job.objects.filter(user=user)
     expertises = Expertise.objects.filter(user=user)
 
+    resume = Resume.objects.filter(user=user)
+
+    #currently only one user / resume can be in the database TODO: Rewrite this sh*tty, temporary workaround.
+    try:
+        resume = resume[0]
+    except:
+        pass
+    
     context = {
         'user': user,
         'projects': projects,
@@ -24,6 +34,7 @@ def index(request):
         'introductions': introductions,
         'jobs': jobs,
         'expertises': expertises,
+        'resume': resume,
     }
 
     return render(request, 'index.html', context)

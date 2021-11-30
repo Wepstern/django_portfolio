@@ -1,7 +1,7 @@
 import pytest
 from mixer.backend.django import mixer
 from django.core.exceptions import ValidationError
-from portfolio.models import User, CertificateAuthority, Company, Task, Skill, Certificate, Category, Profession, Job, UserStory, Introduction, Expertise, Project
+from portfolio.models import User, Resume, CertificateAuthority, Company, Task, Skill, Certificate, Category, Profession, Job, UserStory, Introduction, Expertise, Project
 
 pytestmark = pytest.mark.django_db
 
@@ -29,6 +29,16 @@ class TestUser:
             last_name = "Doe",
         )
         assert user.__str__() == "John Doe", "Should return John Doe."
+
+class TestResume:
+    def test_str_function(self):
+        user = User(
+            pk = 1,
+            first_name = "John",
+            last_name = "Doe",
+        )
+        resume = Resume(user=user)
+        assert resume.__str__() == "Resume of John Doe", "Should return John Doe."
 
 class TestCertificateAuthority:
     def test_str_function(self):
@@ -68,7 +78,6 @@ class TestProfession:
 class TestJob:
     def test_str_function(self):
         company = company = Company(name="Reddit")
-
         job = Job(
             position="Technical Test Analyst",
             company=company,

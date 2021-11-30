@@ -10,7 +10,9 @@
                         {% for introduction in introductions.all %}
                         <div class="py-2">{{ introduction.description }}</div>
                         {% empty %}
-                        <div class="text-warning">No introduction has been created yet. Create an introduction!</div>
+                        <div>
+                            <p class="text-warning">No introduction has been created yet. Please create an introduction.</p>
+                        </div>
                         {% endfor %}
                     </div>
                 </div>

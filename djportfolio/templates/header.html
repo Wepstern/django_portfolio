@@ -12,7 +12,9 @@
                         <!-- USER SHORT INTRODUCTION -->
                         <p class="text-altsecondary w-50">{{ user_story.short_introduction }}</p>
                     {% empty %}
-                    <div class="text-warning">No user story has been created yet. Create an user story!</div>
+                    <div>
+                        <p class="text-warning">No user story has been created yet. Please create a user story first.</p>
+                    </div>
                     {% endfor %}
                 </div>
                 <a class="btn btn-outline-altprimary" href="#about" role="button">View My Portfilio<i class="bi bi-chevron-right"></i></a>

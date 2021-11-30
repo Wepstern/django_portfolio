@@ -75,7 +75,7 @@ scripts % ./runserver.sh
 - [X] Contact
 - [X] Separating the pre-commit and pre-push tests by testing levels
 - [ ] UI iterateion
-    - [ ] View my resume function (ui, update user model, routing)
+    - [X] View my resume function (ui, update user model, routing)
     - [ ] Expertise (importing svg files, extending expertise model with education model, iterating expertise display, sensitive breakpoints in case expertise name and icon are too long)
     - [ ] Spacing between sections
     - [ ] Implement different Node modules + Django build process for dev and prod environment

@@ -110,5 +110,3 @@ scripts % ./runserver.sh
 - [ ] Loading server data during the first initialisation from a yaml file
 - [ ] Loading server data during the first initialisation from a yaml file
 - [ ] Find a "CMS like" solution for uploading user data
-
-this is a new line for test

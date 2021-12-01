@@ -26,5 +26,11 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     - name: Run Tests
+      working-directory: ./djportfolio
       run: |
+        pytest --cov-report=xml
         python djportfolio/manage.py test
+    - name: Check Code Coverage
+      working-directory: ./scripts
+      run: |
+        python coverage_checker.py

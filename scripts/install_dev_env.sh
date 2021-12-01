@@ -41,3 +41,4 @@ echo "${green}>>> Superuser created.${reset}"
 echo "${green}>>> Configuring clien-side git pre-commit and pre-push hooks.${reset}"
 git config core.hooksPath ../.githooks
 echo "${green}>>> Clien-side git pre-commit and pre-push hooks are configured.${reset}"
+

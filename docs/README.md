@@ -8,7 +8,19 @@ The following steps below are used to create the development environment. Curren
 
 After completing the following steps git pre-commit and pre-push will run automatically tests and create coverage report.
 
-Due to the size of the project, flawless test execution and 100% coverage is mandatory for admin.py, models.py and views.py to perform commit and push operations. Currently the project has no UI test, but I will change that in the future. 
+Due to the size of the project, flawless test execution and 100% coverage is mandatory for admin.py, models.py and views.py to perform commit and push operations. Currently the project has no UI test, but I will change that in the future.
+
+Installing the development environment creates the Django server superuser, and its data like name, email and password are derived from three environment variables that you must set in your bash profile.
+
+```bash
+% open ~/.zprofile
+```
+Add the three new line below to zprofile, then save it and restart your terminal.
+```bash
+export DP_SUPERUSER_NAME=[name_of_superuser]
+export DP_SUPERUSER_EMAIL=[email_of_superuser]
+export DP_SUPERUSER_PASSWORD=[password_of_superuser]
+```
 
 Setting up a development environment manually
 ```bash
@@ -19,6 +31,7 @@ django_portfolio % pip install -r requirements_dev.txt
 django_portfolio % python djportfolio/manage.py migrate
 django_portfolio % python djportfolio/manage.py makemigrations
 django_portfolio % git config core.hooksPath ../.githooks
+django_portfolio % python djportfolio/manage.py createsuperuser
 ```
 
 Setting up a development environment using helper scripts
@@ -87,6 +100,7 @@ scripts % ./runserver.sh
     - [ ] Introduce non-featured project
     - [ ] Navbar blur effect does not work in Safari
     - [ ] Built in CMS possibilities
+- [X] Automatic creation of a superuser during dev environment installation
 - [ ] Containerise the project
 - [ ] UI test environment handling / Selenium Webdriver
 - [ ] Implement asserts in UI tests with bitmapchek comparison

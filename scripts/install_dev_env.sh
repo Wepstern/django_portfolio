@@ -32,12 +32,13 @@ python djportfolio/manage.py migrate
 python djportfolio/manage.py makemigrations
 echo "${green}>>> Database is migrated.${reset}"
 
-# #Create superuser
-# echo "${green}>>> Creating superuser.${reset}"
-# echo "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.create_superuser('${DP_SUPERUSER_NAME}', '${DP_SUPERUSER_EMAIL}', '${DP_SUPERUSER_PASSWORD}')" | python djportfolio/manage.py shell
-# echo "${green}>>> Superuser created.${reset}"
+#Create superuser
+echo "${green}>>> Creating superuser.${reset}"
+echo "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.create_superuser('${DP_SUPERUSER_NAME}', '${DP_SUPERUSER_EMAIL}', '${DP_SUPERUSER_PASSWORD}')" | python djportfolio/manage.py shell
+echo "${green}>>> Superuser created.${reset}"
 
 #Configure git hooks
 echo "${green}>>> Configuring clien-side git pre-commit and pre-push hooks.${reset}"
-git config core.hooksPath ../.githooks
+cd ..
+git config core.hooksPath ./.githooks
 echo "${green}>>> Clien-side git pre-commit and pre-push hooks are configured.${reset}"

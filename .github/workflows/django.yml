@@ -29,7 +29,6 @@ jobs:
       working-directory: ./djportfolio
       run: |
         pytest --cov-report=xml
-        python djportfolio/manage.py test
     - name: Check Code Coverage
       working-directory: ./scripts
       run: |

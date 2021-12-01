@@ -86,7 +86,7 @@ scripts % ./runserver.sh
 - [X] Projects
 - [X] Blog
 - [X] Contact
-- [X] Separating the pre-commit and pre-push tests by testing levels
+- [ ] Loading server data during the first initialisation from a yaml file
 - [ ] UI iterateion
     - [X] View my resume function (ui, update user model, routing)
     - [ ] Expertise (importing svg files, extending expertise model with education model, iterating expertise display, sensitive breakpoints in case expertise name and icon are too long)
@@ -107,6 +107,5 @@ scripts % ./runserver.sh
 - [ ] Implement statical analysis into git hooks
 - [ ] Separating the pre-commit and pre-push tests by testing levels
 - [ ] Forcing tests and code coverage measurement by requirements
-- [ ] Loading server data during the first initialisation from a yaml file
 - [ ] Loading server data during the first initialisation from a yaml file
 - [ ] Find a "CMS like" solution for uploading user data

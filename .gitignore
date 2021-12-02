@@ -57,10 +57,6 @@ coverage.xml
 
 # staticfiles // temporary upload the whole bootstrap framework
 
-# django stuff:
-media/
-CACHE/
-
 # Backup files # 
 *.bak
 

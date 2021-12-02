@@ -2,7 +2,7 @@
 Django production settings for djportfolio project on Heroku.
 Heroku Django Config Vars:
     DJANGO_SETTINGS_MODULE = 'djportfolio.production_settings'
-    DJANGO_SECRET_KEY = <SECRETE_KEY>
+    DJANGO_SECRET_KEY = <SECRET_KEY>
     DJANGO_ALLOWED_HOSTS = <HEROKU_PROJECT_NAME.herokuapp.com>
 Heroku PostgreSql Config Vars:
     DB_USER = <HEROKU_POSTGRESQL_USER>

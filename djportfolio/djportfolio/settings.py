@@ -29,7 +29,7 @@ DEBUG = True
 try:
     HEROKU_ALLOWED_HOSTS = os.environ('HEROKU_ALLOWED_HOSTS')
 except:
-    pass
+    HEROKU_ALLOWED_HOSTS = '127.0.0.1'
 
 ALLOWED_HOSTS = [
     HEROKU_ALLOWED_HOSTS,

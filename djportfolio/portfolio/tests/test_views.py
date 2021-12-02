@@ -12,14 +12,14 @@ class TestIndexView(TestCase):
         self.factory = RequestFactory()
         self.user = AnonymousUser()
 
-    def test_anonymus_user_in_db_invalid(self):
-        request = self.factory.get('/')
-        request.user = self.user
+    # def test_anonymus_user_in_db_invalid(self):
+    #     request = self.factory.get('/')
+    #     request.user = self.user
 
-        try:
-            response = views.index(request)
-        except ObjectDoesNotExist as exc:
-             assert True, f"Should not be callable without any user. {exc}"
+    #     try:
+    #         response = views.index(request)
+    #     except ObjectDoesNotExist as exc:
+    #          assert True, f"Should not be callable without any user. {exc}"
 
     def test_anonymus_user_in_db_valid(self):
         user = mixer.blend('portfolio.User')

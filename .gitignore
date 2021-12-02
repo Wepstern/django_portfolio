@@ -137,6 +137,6 @@ GitHub.sublime-settings
 .history
 
 # macOS
-.DS_Store
+*/.DS_Store
 
 !.here

@@ -26,13 +26,8 @@ SECRET_KEY = 're=km7uxhdmvq@4+r=&q_98rl5fal4xie2dp0p2ehq(9utj^(o'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-try:
-    HEROKU_ALLOWED_HOSTS = os.environ('HEROKU_ALLOWED_HOSTS')
-except:
-    HEROKU_ALLOWED_HOSTS = '127.0.0.1'
-
 ALLOWED_HOSTS = [
-    HEROKU_ALLOWED_HOSTS,
+    os.environ('HEROKU_ALLOWED_HOSTS'),
 ]
 
 

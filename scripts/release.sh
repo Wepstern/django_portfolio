@@ -1,7 +1,7 @@
 #Migra database
 echo "${green}>>> Migration the database.${reset}"
-python djportfolio/manage.py migrate
 python djportfolio/manage.py makemigrations
+python djportfolio/manage.py migrate
 echo "${green}>>> Database is migrated.${reset}"
 
 #Create superuser

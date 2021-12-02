@@ -1,2 +1,2 @@
 release: python manage.py migrate
-web: gunicorn djportfolio.wsgi --log-file=-
+web: gunicorn djportfolio.djportfolio.wsgi --log-file=-

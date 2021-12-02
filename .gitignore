@@ -56,8 +56,8 @@ coverage.xml
 *.pot
 
 # staticfiles // temporary upload the whole bootstrap framework
-staticfiles/
-media/
+staticfiles
+media
 
 # Backup files # 
 *.bak

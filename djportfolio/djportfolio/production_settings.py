@@ -53,7 +53,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'portfolio.apps.PortfolioConfig',
-    'compressor',
 ]
 
 MIDDLEWARE = [
@@ -134,35 +133,15 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
+## Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [ 
-    os.path.join(BASE_DIR, 'staticfiles'), 
-]
-
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
-MEDIA_URL = '/media/'
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-COMPRESS_ROOT = STATIC_ROOT
-
-STATICFILES_FINDERS = [
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'compressor.finders.CompressorFinder',
-]
-
-COMPRESS_ENABLED = True
-COMPRESS_OFFLINE = True
-
-COMPRESS_PRECOMPILERS = (
-    ('text/x-sass', 'django_libsass.SassCompiler'),
-    ('text/x-scss', 'django_libsass.SassCompiler'),
-)
+MEDIA_URL = '/media/'

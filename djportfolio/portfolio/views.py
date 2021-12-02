@@ -11,7 +11,8 @@ def index(request):
         user = users[0]
     else:
         #TODO: Landing page -> Redirect to admin page
-        raise ObjectDoesNotExist('There is no user in the database, please register one on the admin site!')
+        # raise ObjectDoesNotExist('There is no user in the database, please register one on the admin site!')
+        pass
 
     projects = Project.objects.filter(author=user)
     user_story = UserStory.objects.filter(user=user)

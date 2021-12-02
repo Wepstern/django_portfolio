@@ -13,20 +13,26 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 from pathlib import Path
 import os
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+# Application base dir
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
+# Application secret key from Heroku Config Vars
 
-# SECURITY WARNING: keep the secret key used in production secret!
-os.environ('SECRET_KEY')
+os.environ.get('SECRET_KEY')
 
-# SECURITY WARNING: don't run with debug turned on in production!
+
+# Application debug settings
+
 DEBUG = False
 
-ALLOWED_HOSTS = []
+
+# Allowed host from Heroku Config Vars
+
+ALLOWED_HOSTS = [
+    os.environ.get('DJANGO_ALLOWED_HOSTS'),
+]
 
 
 # Application definition
@@ -73,23 +79,16 @@ TEMPLATES = [
 WSGI_APPLICATION = 'djportfolio.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-
-DB_NAME = os.environ('DB_NAME')
-DB_USER = os.environ('DB_USER')
-DB_PASSWORD = os.environ('DB_PASSWORD')
-DB_HOST = os.environ('DB_HOST')
-DB_PORT = os.environ('DB_PORT')
+# Database settings from Heroku Config Vars
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME':  DB_NAME,
-        'USER': DB_USER,
-        'PASSWORD': DB_PASSWORD,
-        'HOST': DB_HOST,
-        'PORT': DB_PORT,
+        'NAME':  os.environ.get('DB_NAME'),
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_PASSWORD'),
+        'HOST': os.environ.get('DB_HOST'),
+        'PORT': os.environ.get('DB_PORT'),
     }
 }
 

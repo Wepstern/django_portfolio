@@ -19,8 +19,8 @@ import os
 # Application base dir
 
 # TODO: delete or leave
-# BASE_DIR = Path(__file__).resolve().parent.parent
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = Path(__file__).resolve().parent.parent
+# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # Application secret key from Heroku Config Vars
@@ -136,18 +136,18 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # TODO: delete or leave
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # TODO: delete or leave
-# STATICFILES_DIRS = [ 
-#     os.path.join(BASE_DIR, "staticfiles"), 
-# ]
+STATICFILES_DIRS = [ 
+    os.path.join(BASE_DIR, "staticfiles"), 
+]
 
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
+# STATICFILES_DIRS = (
+#     os.path.join(BASE_DIR, 'static'),
+# )
 
 MEDIA_URL = '/media/'
 

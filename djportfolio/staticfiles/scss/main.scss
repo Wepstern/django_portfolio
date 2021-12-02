@@ -1,0 +1,101 @@
+// Custom variables
+$color-0: #293241; // Body Background, Navbar Background
+$color-1: #e0fbfc; // Navbar dark text color
+$color-2: #ee6c4d; // Primary text
+$color-3: #98c1d9; // Secondary text
+$color-4: #3a475d;
+
+$color-5: #576490;
+
+$color-6: #A3BCF9;
+$color-7: #D1D2F9;
+
+$color-8: #C9CAD9;
+
+// Bootstrap variables
+@import "../bootstrap/node_modules/bootstrap/scss/_functions";
+@import "../bootstrap/node_modules/bootstrap/scss/_variables";
+
+// Custom the bootstrap theme color (ex: alert-custom-color)
+$custom-theme-colors: (
+  "altdark":  $color-0,
+  "altlight": $color-1,
+  "altprimary": $color-2,
+  "altsecondary": $color-3,
+  "altfourth": $color-4
+);
+
+// Custom the bootstrap utilities color (ex: text-custom-color or bg-custom-color)
+$custom-utilities-colors: $custom-theme-colors;
+
+// Custom the bootstrap table color (ex: table-custom-color)
+$custom-table-colors: $custom-theme-colors;
+
+// Merge the custom colors to the bootstrap default
+$theme-colors: map-merge($theme-colors, $custom-theme-colors);
+$utilities-text-colors: map-merge($utilities-text-colors, $custom-utilities-colors );
+$utilities-bg-colors: map-merge($utilities-bg-colors, $custom-utilities-colors);
+$table-variants: map-merge($table-variants, $custom-table-colors);
+
+// Navlink - spacing
+$nav-link-padding-y:                1rem;
+$nav-link-padding-x:                1rem;
+
+// Navlink - color
+$nav-link-color:                    $color-3;
+$nav-link-hover-color:              $color-2;
+$nav-pills-link-active-color:       $color-2;
+$nav-pills-link-active-bg:          $color-0;
+
+// @import "../bootstrap/node_modules/bootstrap/scss/_variables";
+@import "../bootstrap/node_modules/bootstrap/scss/mixins";
+@import "../bootstrap/node_modules/bootstrap/scss/utilities";
+
+// Overwrite defaults
+
+// Navbar - color
+$navbar-dark-color:                rgba($color-1, 1);
+$navbar-dark-hover-color:          $color-2;
+$navbar-dark-active-color:         rgba($color-1, .9);
+$navbar-dark-disabled-color:       rgba($color-1, .3);
+$navbar-dark-toggler-icon-bg:      url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='#{$navbar-light-color}' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>") !default;
+$navbar-dark-toggler-border-color: rgba($color-1, .1);
+
+$navbar-dark-brand-color:                $navbar-dark-active-color;
+$navbar-dark-brand-hover-color:          $navbar-dark-active-color;
+
+// Button - color
+$form-file-button-color:          $input-color !default;
+$form-file-button-bg:             $color-0;
+$form-file-button-hover-bg:       shade-color($form-file-button-bg, 5%) !default;
+
+// Card - color
+$card-border-color: $color-4;
+
+// Spacer
+$spacer: 2rem;
+$spacers: ();
+
+$spacers: (
+  0: 0,
+  1: ($spacer * .25),
+  2: ($spacer * .5),
+  3: $spacer,
+  4: ($spacer * 1.5),
+  5: ($spacer * 3),
+  6: ($spacer * 5)
+);
+
+.card {
+  &:hover .project-picture {
+    mix-blend-mode: normal;
+  }
+  &:hover {
+    transform: scale(1.01);
+    transition: all .3s ease-in-out;
+  }
+  overflow: hidden;
+}
+
+@import "../bootstrap/node_modules/bootstrap/scss/bootstrap";
+@import "../bootstrap-icons/node_modules/bootstrap-icons/font/bootstrap-icons.css";

@@ -1,5 +1,4 @@
 {% load static %}
-{% load compress %}
 
 <head>
     <meta charset="utf-8">
@@ -13,9 +12,7 @@
     <link rel="stylesheet" href="{% static 'css/typography.css' %}">
 
     <!-- locale, Bootstrap 5.1.3-->
-    {% compress css %}
     <link type="text/x-scss" href="{% static 'scss/main.scss' %}" rel="stylesheet" media="screen">
-    {% endcompress %}
 
     <title>Portfolio</title>        
 </head>

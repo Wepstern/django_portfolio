@@ -15,6 +15,9 @@ Heroku PostgreSql Config Vars:
 
 from pathlib import Path
 import os
+import mimetypes
+
+mimetypes.add_type("text/css", ".css", True)
 
 # Application base dir
 

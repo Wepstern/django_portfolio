@@ -2,11 +2,12 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.core.exceptions import ObjectDoesNotExist
 from .models import Expertise, Introduction, User, Project, UserStory, Job, Resume
-from django.core.mail import mail_admins
+from django.core.mail import send_mail
 from .forms import ContactForm
 from django.conf import settings
 
 from datetime import datetime
+import os
 
 def index(request):
     if request.method == 'POST' and 'Contact' in request.POST:
@@ -18,17 +19,20 @@ def index(request):
         contact_form.contact_message = request.POST['contact_message']
 
         if contact_form.is_valid():
-            if settings.DEBUG:
-                from_email = 'devTestEmail@gmai.com'
-            else:
+            if settings.DEBUG == False:
                 from_email = settings.EMAIL_HOST_USER
 
-            mail_admins(
-                'Someone tried to contact you at ' + dateTimeObj.strftime("%d-%b-%Y (%H:%M:%S.%f)") + ' !', 
-                'Email from: ' + contact_form.contact_email + "\n" + contact_form.contact_message,
-                fail_silently=False, 
-                connection=None, 
-                html_message=None
+            subject = 'Someone tried to contact you at ' + dateTimeObj.strftime("%d-%b-%Y (%H:%M:%S.%f)") + ' !'
+            message = 'Email from: ' + contact_form.contact_email + "\n" + contact_form.contact_message
+            email_from = settings.EMAIL_HOST_USER
+            recipient_list = [os.environ.get('DJANGO_ADMIN_EMAIL'),]
+
+            send_mail(
+                subject, 
+                message,
+                email_from,
+                recipient_list,
+                html_message=None,
             )
 
             return HttpResponseRedirect('/#contact')

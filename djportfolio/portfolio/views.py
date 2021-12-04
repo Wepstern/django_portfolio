@@ -21,14 +21,14 @@ def index(request):
         if contact_form.is_valid():
             subject = 'Someone tried to contact you at ' + dateTimeObj.strftime("%d-%b-%Y (%H:%M:%S.%f)") + ' !'
             message = 'Email from: ' + contact_form.contact_email + "\n" + contact_form.contact_message
-            email_from = settings.EMAIL_HOST_USER
-            recipient_list = [settings.DJANGO_ADMIN_EMAIL,]
+            email_from = str(settings.EMAIL_HOST_USER)
+            email_to = str(settings.DJANGO_ADMIN_EMAIL)
 
             send_mail(
                 subject, 
                 message,
                 email_from,
-                recipient_list,
+                [email_to],
                 html_message=None,
             )
 

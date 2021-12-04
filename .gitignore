@@ -8,8 +8,8 @@ djportfolio/media/*
 djportfolio/staticfiles/*
 
 # for the necessary empty folders
-!djportfolio/staticfiles/README.md
-!djportfolio/media/README.md
+!djportfolio/staticfiles/.here
+!djportfolio/media/.here
 
 # Backup files # 
 *.bak
@@ -145,7 +145,6 @@ GitHub.sublime-settings
 .DS_Store
 
 # npm packages
-/node_modules
+node_modules/
 npm-debug.log
-.DS_Store
 /*.env

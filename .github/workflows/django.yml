@@ -34,7 +34,7 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-    - name: Collect Node.js Packages to staticfiles folder
+    - name: Collect Node.js packages to STATIC_ROOT folder
       working-directory: ./djportfolio
       run: |
         python  manage.py collectstatic --noinput

@@ -23,7 +23,7 @@ echo "${green}>>> Python venv is activated.${reset}"
 #Install requirements
 echo "${green}>>> Installing the requirements.${reset}"
 cd ..
-pip install -r requirements_dev.txt
+pip install -r requirements.txt
 echo "${green}>>> Requirements are installed.${reset}"
 
 #Migra database

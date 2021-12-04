@@ -27,7 +27,7 @@ Setting up a development environment manually
 django_portfolio % mkdir venv
 django_portfolio % python -m venv venv/django_portfolio
 django_portfolio % source venv/django_portfolio/bin/activate
-django_portfolio % pip install -r requirements_dev.txt
+django_portfolio % pip install -r requirements.txt
 django_portfolio % python djportfolio/manage.py migrate
 django_portfolio % python djportfolio/manage.py makemigrations
 django_portfolio % git config core.hooksPath ../.githooks

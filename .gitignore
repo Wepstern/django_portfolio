@@ -7,8 +7,11 @@ djportfolio/db.sqlite3
 djportfolio/media
 djportfolio/staticfiles
 
+# for the necessary empty folders
+!.here
+
 # Backup files # 
-*.bak 
+*.bak
 
 # If you are using PyCharm # 
 # User-specific stuff
@@ -139,6 +142,3 @@ GitHub.sublime-settings
 
 # macOS
 .DS_Store
-
-# for the necessary empty folders
-!.here

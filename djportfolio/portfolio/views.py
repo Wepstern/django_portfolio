@@ -25,7 +25,7 @@ def index(request):
             subject = 'Someone tried to contact you at ' + dateTimeObj.strftime("%d-%b-%Y (%H:%M:%S.%f)") + ' !'
             message = 'Email from: ' + contact_form.contact_email + "\n" + contact_form.contact_message
             email_from = settings.EMAIL_HOST_USER
-            recipient_list = [os.environ.get('DJANGO_ADMIN_EMAIL'),]
+            recipient_list = [settings.DJANGO_ADMIN_EMAIL,]
 
             send_mail(
                 subject, 

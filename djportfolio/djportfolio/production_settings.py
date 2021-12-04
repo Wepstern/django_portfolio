@@ -201,6 +201,8 @@ DJANGO_ADMIN_EMAIL = os.environ.get('DJANGO_ADMIN_EMAIL')
 
 # Logger
 
+LOG_FILE = os.path.join(SOURCE_ROOT, 'log', 'debug.log')
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -208,7 +210,7 @@ LOGGING = {
         'file': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
-            'filename': '/log/debug.log',
+            'filename': LOG_FILE,
         },
     },
     'loggers': {

@@ -1,0 +1,1 @@
+This file is needed because git ignores the entire contents of this folder except this file, so this folder will be available in the prod environment.

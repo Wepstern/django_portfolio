@@ -4,11 +4,12 @@
 *.pyc
 __pycache__
 djportfolio/db.sqlite3
-djportfolio/media
-djportfolio/staticfiles
+djportfolio/media/*
+djportfolio/staticfiles/*
 
 # for the necessary empty folders
-!.here
+!djportfolio/staticfiles/README.md
+!djportfolio/media/README.md
 
 # Backup files # 
 *.bak

@@ -143,3 +143,9 @@ GitHub.sublime-settings
 
 # macOS
 .DS_Store
+
+# npm packages
+/node_modules
+npm-debug.log
+.DS_Store
+/*.env

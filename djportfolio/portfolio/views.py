@@ -40,8 +40,7 @@ def index(request):
     if len(users) == 1:
         user = users[0]
     else:
-        pass
-        # raise ObjectDoesNotExist('There is no user in the database, please register one on the admin site!')
+        raise ObjectDoesNotExist('There is no user in the database, please register one on the admin site!')
 
     projects = Project.objects.filter(author=user)
     user_story = UserStory.objects.filter(user=user)

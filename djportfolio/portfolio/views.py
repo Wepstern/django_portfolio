@@ -19,9 +19,6 @@ def index(request):
         contact_form.contact_message = request.POST['contact_message']
 
         if contact_form.is_valid():
-            if settings.DEBUG == False:
-                from_email = settings.EMAIL_HOST_USER
-
             subject = 'Someone tried to contact you at ' + dateTimeObj.strftime("%d-%b-%Y (%H:%M:%S.%f)") + ' !'
             message = 'Email from: ' + contact_form.contact_email + "\n" + contact_form.contact_message
             email_from = settings.EMAIL_HOST_USER

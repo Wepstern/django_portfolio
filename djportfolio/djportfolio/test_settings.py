@@ -8,3 +8,5 @@ DATABASES = {
 }
 
 EMAIL_BACKEND = 'django.core.mail.backends.locmem.EmailBackend'
+
+DJANGO_ADMIN_EMAIL = 'fish@egg.com'

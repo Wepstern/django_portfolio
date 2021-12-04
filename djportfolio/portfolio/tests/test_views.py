@@ -34,20 +34,11 @@ class TestIndexView(TestCase):
         assert response.status_code == 200, 'Should not be callable without user.'
 
     def test_contact_form_dev(self):
-        c = Client()
-        response = c.post('', {
+        clien = Client()
+        response = clien.post('', {
             'Contact': '',
             'contact_message': 'Hello friend. Hello friend? That\'s lame. Maybe I should give you a name.', 
             'contact_email': 'test@test.com'}
         )
         assert response.status_code == 302, 'Should redirect.'
     
-    def test_contact_form_dev_prod(self):
-        settings.DEBUG = True
-        c = Client()
-        response = c.post('', {
-            'Contact': '',
-            'contact_message': 'Hello friend. Hello friend? That\'s lame. Maybe I should give you a name.', 
-            'contact_email': 'test@test.com'}
-        )
-        assert response.status_code == 302, 'Should redirect.'

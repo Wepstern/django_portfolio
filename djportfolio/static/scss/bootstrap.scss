@@ -13,8 +13,8 @@ $color-7: #D1D2F9;
 $color-8: #C9CAD9;
 
 // Bootstrap variables
-@import "../bootstrap/bootstrap-5.1.3/node_modules/bootstrap/scss/_functions";
-@import "../bootstrap/bootstrap-5.1.3/node_modules/bootstrap/scss/_variables";
+@import "../bootstrap/scss/_functions";
+@import "../bootstrap/scss/_variables";
 
 // Custom the bootstrap theme color (ex: alert-custom-color)
 $custom-theme-colors: (
@@ -48,8 +48,8 @@ $nav-pills-link-active-color:       $color-2;
 $nav-pills-link-active-bg:          $color-0;
 
 // @import "../bootstrap/node_modules/bootstrap/scss/_variables";
-@import "../bootstrap/bootstrap-5.1.3/node_modules/bootstrap/scss/mixins";
-@import "../bootstrap/bootstrap-5.1.3/node_modules/bootstrap/scss/utilities";
+@import "../bootstrap/scss/mixins";
+@import "../bootstrap/scss/utilities";
 
 // Overwrite defaults
 
@@ -97,5 +97,5 @@ $spacers: (
   overflow: hidden;
 }
 
-@import "../bootstrap/bootstrap-5.1.3/node_modules/bootstrap/scss/bootstrap";
-@import "../bootstrap/icons-1.7.0/node_modules/bootstrap-icons/font/bootstrap-icons.css";
+@import "../bootstrap/scss/bootstrap";
+@import "../bootstrap-icons/font/bootstrap-icons.css";

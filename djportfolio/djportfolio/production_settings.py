@@ -17,13 +17,15 @@ from pathlib import Path
 import os
 import mimetypes
 
-mimetypes.add_type("text/css", ".css", True)
 
 # Application base dir
 
-# TODO: delete or leave
 BASE_DIR = Path(__file__).resolve().parent.parent
-# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+
+# Source base dir
+
+SOURCE_ROOT = Path(__file__).resolve().parent.parent.parent
 
 
 # Application secret key from Heroku Config Vars
@@ -140,8 +142,15 @@ USE_TZ = True
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
+
+# Heroku buildpack can install requirement only from source root.
+# Build & Deployement workflow is from static perspective:
+#   - heroku build -> npm install bootsrap & bootstrap-icon to \node_modules
+#   - heroku build -> collectstatic static command copy the node_modules and static folder to staticfolder
+#   - heroku post_complie -> django_libsass & djanog_compress will compress scss to staticfolder offline
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
+    os.path.join(SOURCE_ROOT, 'node_modules'),
 )
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

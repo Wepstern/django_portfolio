@@ -13,12 +13,16 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 from pathlib import Path
 import os
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+
+# Application base dir
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
+# Source base dir
+
+SOURCE_ROOT = Path(__file__).resolve().parent.parent.parent
+
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 're=km7uxhdmvq@4+r=&q_98rl5fal4xie2dp0p2ehq(9utj^(o'
@@ -125,6 +129,7 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
+    os.path.join(SOURCE_ROOT, 'node_modules'),
 )
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

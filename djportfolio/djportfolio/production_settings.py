@@ -161,6 +161,8 @@ MEDIA_URL = '/media/'
 
 STATICFILES_FINDERS = [
     'compressor.finders.CompressorFinder',
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 ]
 
 COMPRESS_PRECOMPILERS = (

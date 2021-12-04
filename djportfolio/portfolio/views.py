@@ -1,9 +1,38 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.core.exceptions import ObjectDoesNotExist
 from .models import Expertise, Introduction, User, Project, UserStory, Job, Resume
-from django.http import FileResponse, Http404
+from django.core.mail import mail_admins
+from .forms import ContactForm
+from django.conf import settings
+
+from datetime import datetime
 
 def index(request):
+    if request.method == 'POST' and 'Contact' in request.POST:
+        dateTimeObj = datetime.now()
+
+        contact_form = ContactForm(request.POST)
+
+        contact_form.contact_email = request.POST['contact_email']
+        contact_form.contact_message = request.POST['contact_message']
+
+        if contact_form.is_valid():
+            if settings.DEBUG:
+                from_email = 'devTestEmail@gmai.com'
+            else:
+                from_email = settings.EMAIL_HOST_USER
+
+            mail_admins(
+                'Someone tried to contact you at ' + dateTimeObj.strftime("%d-%b-%Y (%H:%M:%S.%f)") + ' !', 
+                'Email from: ' + contact_form.contact_email + "\n" + contact_form.contact_message,
+                fail_silently=False, 
+                connection=None, 
+                html_message=None
+            )
+
+            return HttpResponseRedirect('/#contact')
+    
     users = User.objects.all()
 
     #currently only one user can be in the database TODO: Rewrite this sh*tty, temporary workaround.

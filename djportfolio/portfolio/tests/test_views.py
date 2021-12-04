@@ -4,6 +4,8 @@ from django.test import RequestFactory, TestCase
 from .. import views
 from django.core.exceptions import ObjectDoesNotExist
 from mixer.backend.django import mixer
+from django.test import Client
+from django.conf import settings
 
 pytestmark = pytest.mark.django_db
 
@@ -30,3 +32,22 @@ class TestIndexView(TestCase):
 
         response = views.index(request)
         assert response.status_code == 200, 'Should not be callable without user.'
+
+    def test_contact_form_dev(self):
+        c = Client()
+        response = c.post('', {
+            'Contact': '',
+            'contact_message': 'Hello friend. Hello friend? That\'s lame. Maybe I should give you a name.', 
+            'contact_email': 'test@test.com'}
+        )
+        assert response.status_code == 302, 'Should redirect.'
+    
+    def test_contact_form_dev_prod(self):
+        settings.DEBUG = True
+        c = Client()
+        response = c.post('', {
+            'Contact': '',
+            'contact_message': 'Hello friend. Hello friend? That\'s lame. Maybe I should give you a name.', 
+            'contact_email': 'test@test.com'}
+        )
+        assert response.status_code == 302, 'Should redirect.'

@@ -13,17 +13,18 @@
                         <p>If you do not wish to contact me via any of the social platforms listed below, please contact me here!</p>
                         <p>All comments are welcome!</p>
                     </div>
-                    <form class="pt-4">
-                        <div class="form-group ">
+                    <form class="pt-4" method="POST">
+                        {% csrf_token %}
+                        <div class="form-group">
                             <label class="text-altprimary" for="exampleFormControlInput1">Your Email</label>
-                            <input type="email" class="form-control text-altprimary" id="exampleFormControlInput1" placeholder="name@example.com">
+                            <input type="email" class="form-control text-altprimary" id="exampleFormControlInput1" placeholder="name@example.com" name="contact_email">
                         </div>
                         <div class="form-group">
                             <label class="text-altprimary" for="exampleFormControlTextarea1">Your Message</label>
-                            <textarea class="form-control text-altprimary" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            <textarea class="form-control text-altprimary" id="exampleFormControlTextarea1" rows="3" placeholder="Your Message" name="contact_message"></textarea>
                         </div>
                         <div class="pb-2 pt-4">
-                            <button type="submit" class="btn btn-outline-altprimary">Send</button>
+                            <button type="submit" class="btn btn-outline-altprimary" name="Contact">Send</button>
                         </div>
                     </form>
                 </div>

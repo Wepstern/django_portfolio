@@ -150,3 +150,8 @@ STATICFILES_FINDERS = [
 COMPRESS_PRECOMPILERS = (
     ('text/x-scss', 'django_libsass.SassCompiler'),
 )
+
+
+# email
+
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"

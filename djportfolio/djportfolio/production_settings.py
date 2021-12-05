@@ -1,16 +1,27 @@
 """
 Django production settings for djportfolio project on Heroku.
-Heroku Django Config Vars:
-    DJANGO_SETTINGS_MODULE = 'djportfolio.settings'
-    DJANGO_SECRET_KEY = <SECRET_KEY>
-    DJANGO_ALLOWED_HOSTS = <HEROKU_PROJECT_NAME.herokuapp.com>
-Heroku PostgreSql Config Vars:
-    DB_USER = <HEROKU_POSTGRESQL_USER>
-    DB_PORT = <HEROKU_POSTGRESQL_PORT>
-    DB_PASSWORD = <HEROKU_POSTGRESQL_PASSWORD>
-    DB_NAME = <HEROKU_POSTGRESQL_DATABASE>
-    DB_HOST = <HEROKU_POSTGRESQL_HOST>
-    DATABASE_URL = <HEROKU_POSTGRESQL_URI>
+Django Config Vars from Heroku Config Vars:
+    - DJANGO_SECRET_KEY = <secret_key>
+    - DJANGO_ALLOWED_HOSTS = <herok_project_name>.herokuapp.com
+Heroku PostgreSql from Heroku Config Vars:
+    - DB_USER: <heroku_postgresql_user>
+    - DB_PORT: <heroku_postgresql_port>
+    - DB_PASSWORD: <heroku_postgresql_password>
+    - DB_NAME: <heroku_postgresql_database>
+    - DB_HOST: <heroku_postgresql_host>
+    - DATABASE_URL: <heroku_postgresql_uri>
+Cloudinary Storage settings from Heroku Config Vars:
+    - CLOUD_NAME: <cloudinary_name>
+    - API_KEY: <cloudinary_api_key>
+    - API_SECRET: <cloudinary_api_secret>
+SMTP Settings from Heroku Config Vars:
+    - EMAIL_HOST: <smtp_host>
+    - EMAIL_USE_TLS: <smtp_tls>
+    - EMAIL_PORT: <smtp_port>
+    - EMAIL_HOST_USER: <smtp_user>
+    - EMAIL_HOST_PASSWORD: <smtp_user_password>
+EMAIL SETTINGS from Heroku Config Vars:
+    - DJANGO_ADMIN_EMAIL: <email_to>
 """
 
 from pathlib import Path
@@ -46,7 +57,7 @@ ALLOWED_HOSTS = [
 ]
 
 
-# Application definition
+# Applications
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -93,7 +104,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'djportfolio.wsgi.application'
 
 
-# Database settings from Heroku Config Vars
+# Postgresql database settings from Heroku Config Vars
 
 DATABASES = {
     'default': {
@@ -106,8 +117,8 @@ DATABASES = {
     }
 }
 
+
 # Password validation
-# https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -126,7 +137,6 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 # Internationalization
-# https://docs.djangoproject.com/en/3.1/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
 
@@ -139,18 +149,18 @@ USE_L10N = True
 USE_TZ = True
 
 
-## Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.1/howto/static-files/
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# Heroku buildpack can install requirement only from source root.                                           #
+#                                                                                                             #
+# Build & deployement workflow is from static perspective:                                                    #
+#   - (heroku) build -> npm install bootsrap & bootstrap-icon to \node_modules                                #
+#   - (heroku) build -> collectstatic static command copy the node_modules and static folder to staticfolder  #
+#   - (heroku) post_complie -> django_libsass & djanog_compress will compress scss to staticfolder offline    #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
-
-# Heroku buildpack can install requirement only from source root.
-# Build & Deployement workflow is from static perspective:
-#   - heroku build -> npm install bootsrap & bootstrap-icon to \node_modules
-#   - heroku build -> collectstatic static command copy the node_modules and static folder to staticfolder
-#   - heroku post_complie -> django_libsass & djanog_compress will compress scss to staticfolder offline
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
     os.path.join(SOURCE_ROOT, 'node_modules'),
@@ -160,7 +170,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 
-# django_compressor
+# django_compressor, static files finder and libsass settings
 
 STATICFILES_FINDERS = [
     'compressor.finders.CompressorFinder',
@@ -176,7 +186,7 @@ COMPRESS_OFFLINE = True
 LIBSASS_OUTPUT_STYLE = 'compressed'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-# Cloudinary
+# Cloudinary settings
 
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': os.environ.get('CLOUDINARY_CLOUD_NAME'),
@@ -187,37 +197,13 @@ CLOUDINARY_STORAGE = {
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 
-# Email
+# SMTPm adn email settings
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = str(os.environ.get('EMAIL_HOST'))
-EMAIL_USE_TLS = bool(os.environ.get('EMAIL_USE_TLS'))
-EMAIL_PORT = str(os.environ.get('EMAIL_PORT'))
-EMAIL_HOST_USER = str(os.environ.get('EMAIL_HOST_USER'))
-EMAIL_HOST_PASSWORD = str(os.environ.get('EMAIL_HOST_PASSWORD'))
+EMAIL_HOST = os.environ.get('EMAIL_HOST')
+EMAIL_USE_TLS = os.environ.get('EMAIL_USE_TLS')
+EMAIL_PORT = os.environ.get('EMAIL_PORT')
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 
-DJANGO_ADMIN_EMAIL = str(os.environ.get('DJANGO_ADMIN_EMAIL'))
-
-
-# Logger
-
-LOG_FILE = os.path.join(SOURCE_ROOT, 'log', 'debug.log')
-
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        'file': {
-            'level': 'DEBUG',
-            'class': 'logging.FileHandler',
-            'filename': LOG_FILE,
-        },
-    },
-    'loggers': {
-        'django': {
-            'handlers': ['file'],
-            'level': 'DEBUG',
-            'propagate': True,
-        },
-    },
-}
+DJANGO_ADMIN_EMAIL = os.environ.get('DJANGO_ADMIN_EMAIL')

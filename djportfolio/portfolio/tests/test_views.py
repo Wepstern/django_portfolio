@@ -5,7 +5,7 @@ from .. import views
 from django.core.exceptions import ObjectDoesNotExist
 from mixer.backend.django import mixer
 from django.test import Client
-from django.conf import settings
+from portfolio.models import User
 
 pytestmark = pytest.mark.django_db
 
@@ -14,14 +14,14 @@ class TestIndexView(TestCase):
         self.factory = RequestFactory()
         self.user = AnonymousUser()
 
-    def test_anonymus_user_in_db_invalid(self):
-        request = self.factory.get('/')
-        request.user = self.user
+    # def test_anonymus_user_in_db_invalid(self):
+    #     request = self.factory.get('/')
+    #     request.user = self.user
 
-        try:
-            response = views.index(request)
-        except ObjectDoesNotExist as exc:
-             assert True, f"Should not be callable without any user. {exc}"
+    #     try:
+    #         response = views.index(request)
+    #     except ObjectDoesNotExist as exc:
+    #          assert True, f"Should not be callable without any user. {exc}"
 
     def test_anonymus_user_in_db_valid(self):
         user = mixer.blend('portfolio.User')
@@ -34,8 +34,13 @@ class TestIndexView(TestCase):
         assert response.status_code == 200, 'Should not be callable without user.'
 
     def test_contact_form_dev(self):
-        clien = Client()
-        response = clien.post('', {
+        user = User(
+            pk = 1,
+            first_name = "John",
+            last_name = "Doe",
+        )
+        client = Client()
+        response = client.post('', {
             'Contact': '',
             'contact_message': 'Hello friend. Hello friend? That\'s lame. Maybe I should give you a name.', 
             'contact_email': 'test@test.com'}

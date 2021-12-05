@@ -37,11 +37,13 @@ def index(request):
     users = User.objects.all()
 
     #currently only one user can be in the database TODO: Rewrite this sh*tty, temporary workaround.
-    if len(users) == 1:
-        user = users[0]
-    else:
-        raise ObjectDoesNotExist('There is no user in the database, please register one on the admin site!')
+    user = users[0]
 
+    # if len(users) == 1:
+    #     user = users[0]
+    # else:
+    #     raise ObjectDoesNotExist('There is no user in the database, please register one on the admin site!')
+    
     projects = Project.objects.filter(author=user)
     user_story = UserStory.objects.filter(user=user)
     introductions = Introduction.objects.filter(user=user)

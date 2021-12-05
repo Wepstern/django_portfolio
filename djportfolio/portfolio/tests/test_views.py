@@ -2,10 +2,9 @@ import pytest
 from django.contrib.auth.models import AnonymousUser
 from django.test import RequestFactory, TestCase
 from .. import views
-from django.core.exceptions import ObjectDoesNotExist
 from mixer.backend.django import mixer
 from django.test import Client
-from portfolio.models import User
+import time
 
 pytestmark = pytest.mark.django_db
 
@@ -14,31 +13,20 @@ class TestIndexView(TestCase):
         self.factory = RequestFactory()
         self.user = AnonymousUser()
 
-    # def test_anonymus_user_in_db_invalid(self):
-    #     request = self.factory.get('/')
-    #     request.user = self.user
+    def test_index_error_700(self):
+        user_one = mixer.blend('portfolio.User')
+        user_two = mixer.blend('portfolio.User')
+        client = Client()
+        response = self.client.get('')
+        assert response.context['error'] == 700, 'Error code should be 700.'
 
-    #     try:
-    #         response = views.index(request)
-    #     except ObjectDoesNotExist as exc:
-    #          assert True, f"Should not be callable without any user. {exc}"
-
-    def test_anonymus_user_in_db_valid(self):
-        user = mixer.blend('portfolio.User')
-        assert user.pk == 1, 'Should create a user instance'
-
-        request = self.factory.get('/')
-        request.user = self.user
-
-        response = views.index(request)
-        assert response.status_code == 200, 'Should not be callable without user.'
-
-    def test_contact_form_dev(self):
-        user = User(
-            pk = 1,
-            first_name = "John",
-            last_name = "Doe",
-        )
+    def test_index_error_701(self):
+        client = Client()
+        response = self.client.get('')
+        assert response.context['error'] == 701, 'Error code should be 701.'
+    
+    def test_index_send_contact_form(self):
+        user_= mixer.blend('portfolio.User')
         client = Client()
         response = client.post('', {
             'Contact': '',
@@ -46,4 +34,10 @@ class TestIndexView(TestCase):
             'contact_email': 'test@test.com'}
         )
         assert response.status_code == 302, 'Should redirect.'
+
+    def test_index_open(self):
+        user_= mixer.blend('portfolio.User')
+        client = Client()
+        response = client.get('')
+        assert response.status_code == 200, 'Should redirect.'
     

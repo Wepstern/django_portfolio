@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="px-5">
+    <div class="text-altsecondary position-absolute top-50 start-50 translate-middle">
+        <!-- there are more users than allowed -->
+        {% if error == 700 %}
+        <h1 class="text-altsecondary">Oops! That's a bit much!</h1>
+        <p>Currently only one user profile is supported, please visit the admin site and create a user.</p>
+        {% endif %}
+        <!-- there is no single user -->
+        {% if error == 701 %}
+        <h1>Oops! Something is missing!</h1>
+        <p>There is no user yet. Please visit the admin site and remove a user.</p>
+        {% endif %}
+        <p class="py-3">Visit the <a class="text-altprimary" href="/admin" target="_new">admin</a> page.</p>
+    </div>
+</div>
+
+{% endblock content %}

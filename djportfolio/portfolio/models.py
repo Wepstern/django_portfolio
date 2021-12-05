@@ -20,12 +20,6 @@ class User (models.Model):
     behance = models.URLField(max_length=254, blank=True)
     email = models.EmailField(max_length=254, blank=True)
 
-    def save(self, *args, **kwargs):
-        '''This function validate that there is only one user in the database.'''
-        if not self.pk and User.objects.exists():
-            raise ValidationError('There is can be only one User instance.')
-        return super(User, self).save(*args, **kwargs)
-
     def __str__(self):
         return self.first_name + " " + self.last_name
 

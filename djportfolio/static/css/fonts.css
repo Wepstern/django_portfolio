@@ -1,25 +1,25 @@
 /* Monserat */
 @font-face {
     font-family: 'Montserrat-Bold';
-    src: local('Montserrat-Bold'), url('/static/fonts/Montserrat/Montserrat-Bold.ttf') format('opentype');
+    src: local('Montserrat-Bold'), url('../fonts/Montserrat/Montserrat-Bold.ttf') format('opentype');
   }
   
 @font-face {
   font-family: 'Montserrat-ExtraBold';
-  src: local('Montserrat-ExtraBold'), url('/static/fonts/Montserrat/Montserrat-ExtraBold.ttf') format('opentype');
+  src: local('Montserrat-ExtraBold'), url('../fonts/Montserrat/Montserrat-ExtraBold.ttf') format('opentype');
 }
 
 @font-face {
   font-family: 'Montserrat-Black';
-  src: local('Montserrat-Black'), url('/static/fonts/Montserrat/Montserrat-Black.ttf') format('opentype');
+  src: local('Montserrat-Black'), url('../fonts/Montserrat/Montserrat-Black.ttf') format('opentype');
 }
   
 @font-face {
   font-family: 'Montserrat-Medium';
-  src: local('Montserrat-Medium'), url('/static/fonts/Montserrat/Montserrat-Medium.ttf') format('opentype');
+  src: local('Montserrat-Medium'), url('../fonts/Montserrat/Montserrat-Medium.ttf') format('opentype');
 }
   
 @font-face {
   font-family: 'Montserrat-Light';
-  src: local('Montserrat-Light'), url('/static/fonts/Montserrat/Montserrat-Light.ttf') format('opentype');
+  src: local('Montserrat-Light'), url('../fonts/Montserrat/Montserrat-Light.ttf') format('opentype');
 }

@@ -36,7 +36,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
 # Application debug settings
 
-DEBUG = True
+DEBUG = False
 
 
 # Allowed host from Heroku Config Vars

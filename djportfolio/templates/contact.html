@@ -34,19 +34,19 @@
     <footer class="py-3">
         <div class="text-center">
             {% if user.facebook %}
-            <a href="{{ user.facebook }}"><i class="bi bi-facebook text-altprimary px-2"></i></a>
+            <a href="{{ user.facebook }}" target="_new"><i class="bi bi-facebook text-altprimary px-2"></i></a>
             {% endif %}
             {% if user.linkedin %}
-            <a href="{{ user.linkedin }}"><i class="bi bi-linkedin text-altprimary px-2"></i></a>
+            <a href="{{ user.linkedin }}" target="_new"><i class="bi bi-linkedin text-altprimary px-2"></i></a>
             {% endif %}
             {% if user.github %}
-            <a href="{{ user.github }}"><i class="bi bi-github text-altprimary px-2"></i></a>
+            <a href="{{ user.github }}" target="_new"><i class="bi bi-github text-altprimary px-2"></i></a>
             {% endif %}
             {% if user.instagram %}
-            <a href="{{ user.instagram }}"><i class="bi bi-instagram text-altprimary px-2"></i></a>
+            <a href="{{ user.instagram }}" target="_new"><i class="bi bi-instagram text-altprimary px-2"></i></a>
             {% endif %}
             {% if user.behance %}
-            <a href="{{ user.behance }}"><i class="bi bi-behance text-altprimary px-2"></i></a>
+            <a href="{{ user.behance }}" target="_new"><i class="bi bi-behance text-altprimary px-2"></i></a>
             {% endif %}
             {% if user.email %}
             <a href="mailto:{{ user.email }}"><i class="bi bi-envelope-fill text-altprimary px-2"></i></a>

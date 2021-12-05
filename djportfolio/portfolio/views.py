@@ -31,7 +31,7 @@ def index(request):
                 [email_to],
                 html_message=None,
             )
-
+            
             return HttpResponseRedirect('/#contact')
     
     users = User.objects.all()

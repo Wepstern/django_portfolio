@@ -7,7 +7,7 @@
         </div>
         <div>
             {% if resume.raw_file|length > 0%}
-            <p class="text-altsecondary py-3">Check my experience below or view my <a class="text-altprimary" href="media/{{ resume.raw_file.url }}" target="_new">resume</a> here.</p>
+            <p class="text-altsecondary py-3">Check my experience below or view my <a class="text-altprimary" href="{{ resume.raw_file.url }}" target="_new">resume</a> here.</p>
             {% else %}
             <p class="text-warning py-3">No resume has been uploaded yet. Please upload a resume!</p>
             {% endif %}

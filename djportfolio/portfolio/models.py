@@ -25,7 +25,7 @@ class User (models.Model):
 
 class Resume(models.Model):
     user = models.OneToOneField(User, on_delete=CASCADE)
-    path = models.FileField(upload_to='uploads/resume/')
+    raw_file = models.ImageField(upload_to='resume/', blank=False)
 
     def __str__(self):
         return "Resume of " + self.user.__str__()

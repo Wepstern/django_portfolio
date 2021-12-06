@@ -169,6 +169,8 @@ STATICFILES_DIRS = (
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.RawMediaCloudinaryStorage'
+
 
 # django_compressor, static files finder and libsass settings
 

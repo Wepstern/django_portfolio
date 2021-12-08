@@ -78,19 +78,19 @@ scripts % ./runserver.sh
 <i>Under construction...</i>
 
 ## Planned Features & Bugs & ToDo List
-- [ ] https://github.com/Wepstern/django_portfolio/issues/1
-- [ ] https://github.com/Wepstern/django_portfolio/issues/2
-- [ ] https://github.com/Wepstern/django_portfolio/issues/3
-- [ ] https://github.com/Wepstern/django_portfolio/issues/4
-- [ ] https://github.com/Wepstern/django_portfolio/issues/5
-- [ ] https://github.com/Wepstern/django_portfolio/issues/6
-- [ ] https://github.com/Wepstern/django_portfolio/issues/7
-- [ ] https://github.com/Wepstern/django_portfolio/issues/8
-- [ ] https://github.com/Wepstern/django_portfolio/issues/9
-- [ ] https://github.com/Wepstern/django_portfolio/issues/10
-- [ ] https://github.com/Wepstern/django_portfolio/issues/11
-- [ ] https://github.com/Wepstern/django_portfolio/issues/12
-- [ ] https://github.com/Wepstern/django_portfolio/issues/13
-- [ ] https://github.com/Wepstern/django_portfolio/issues/14
-- [ ] https://github.com/Wepstern/django_portfolio/issues/15
-- [ ] https://github.com/Wepstern/django_portfolio/issues/16
+- [ ] #1
+- [ ] #2
+- [ ] #3
+- [ ] #4
+- [ ] #5
+- [ ] #6
+- [ ] #7
+- [ ] #8
+- [ ] #9
+- [ ] #10
+- [ ] #11
+- [ ] #12
+- [ ] #13
+- [ ] #14
+- [ ] #15
+- [ ] #16

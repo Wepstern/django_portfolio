@@ -3,6 +3,8 @@ This project is a simple one-page website written in Django where you can share 
 
 Currently the page can be loaded with data via the Django builtin admin site, but in the future I would like to enable this directly via a dedicated admin site where the uploaded data and the result of the page formatting can be seen immediately.
 
+ :warning: **The development envrionment description is not up-to-date!** :warning:
+
 ## Development Environment
 The following steps below are used to create the development environment. Currently the project is only macOS "friendly", because the helper scripsts are written in shell, and the pre-commit and pre-push scripts are relay on it. I do not plan to implement the project on the "Windows way", because I want to containerise the project in the future.
 
@@ -76,36 +78,19 @@ scripts % ./runserver.sh
 <i>Under construction...</i>
 
 ## Planned Features & Bugs & ToDo List
-- [X] Implement code coverage measurement into git hooks
-- [X] Implement UI tests into git hooks
-- [X] Models
-- [X] Skeleton page
-- [X] Home section
-- [X] About section
-- [X] Resume
-- [X] Projects
-- [X] Blog
-- [X] Contact
-- [ ] Loading server data during the first initialisation from a yaml file
-- [ ] UI iterateion
-    - [X] View my resume function (ui, update user model, routing)
-    - [ ] Expertise (importing svg files, extending expertise model with education model, iterating expertise display, sensitive breakpoints in case expertise name and icon are too long)
-    - [ ] Spacing between sections
-    - [ ] Implement different Node modules + Django build process for dev and prod environment
-    - [ ] Introduction of different Node + Django build processes for the dev and prod environment, update of gitignore, readme and helper scripts to the new processes
-    - [X] Rebuild from zero model classes for multiple user handling
-    - [X] Extend expertise with certificates
-    - [X] Extend models with projects
-    - [X] Display warnings about empty fields on UI
-    - [ ] Introduce non-featured project
-    - [ ] Navbar blur effect does not work in Safari
-    - [ ] Built in CMS possibilities
-- [X] Automatic creation of a superuser during dev environment installation
-- [ ] Containerise the project
-- [ ] UI test environment handling / Selenium Webdriver
-- [ ] Implement asserts in UI tests with bitmapchek comparison
-- [ ] Implement statical analysis into git hooks
-- [ ] Separating the pre-commit and pre-push tests by testing levels
-- [ ] Forcing tests and code coverage measurement by requirements
-- [ ] Loading server data during the first initialisation from a yaml file
-- [ ] Find a "CMS like" solution for uploading user data
+- [ ] https://github.com/Wepstern/django_portfolio/issues/1
+- [ ] https://github.com/Wepstern/django_portfolio/issues/2
+- [ ] https://github.com/Wepstern/django_portfolio/issues/3
+- [ ] https://github.com/Wepstern/django_portfolio/issues/4
+- [ ] https://github.com/Wepstern/django_portfolio/issues/5
+- [ ] https://github.com/Wepstern/django_portfolio/issues/6
+- [ ] https://github.com/Wepstern/django_portfolio/issues/7
+- [ ] https://github.com/Wepstern/django_portfolio/issues/8
+- [ ] https://github.com/Wepstern/django_portfolio/issues/9
+- [ ] https://github.com/Wepstern/django_portfolio/issues/10
+- [ ] https://github.com/Wepstern/django_portfolio/issues/11
+- [ ] https://github.com/Wepstern/django_portfolio/issues/12
+- [ ] https://github.com/Wepstern/django_portfolio/issues/13
+- [ ] https://github.com/Wepstern/django_portfolio/issues/14
+- [ ] https://github.com/Wepstern/django_portfolio/issues/15
+- [ ] https://github.com/Wepstern/django_portfolio/issues/16

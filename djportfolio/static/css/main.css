@@ -7,8 +7,8 @@
 .show-me {
   transform:translateY(0); 
   transition: all 0.3s ease-in-out;
+  background-color: rgba(41, 50, 65, 0.85);
   box-shadow: 0 10px 30px -10px #000000;
-  backdrop-filter: blur(10px); !important;
 }
 
 .nav-link {

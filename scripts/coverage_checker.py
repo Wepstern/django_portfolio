@@ -2,7 +2,7 @@ import os
 import sys
 from pathlib import Path
 import xml.etree.ElementTree as ET
-from colorama import Fore, Style
+from colorama import Fore
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 

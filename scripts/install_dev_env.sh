@@ -4,9 +4,14 @@ red=`tput setaf 1`
 green=`tput setaf 2`
 reset=`tput sgr0`
 
+#Install node modules
+echo "${green}>>> Installing npm packages.${reset}"
+cd ..
+npm install
+echo "${green}>>> Npm packages are installed.${reset}"
+
 #Create venv
 echo "${green}>>> Creating python virtual environment.${reset}"
-cd ..
 mkdir venv
 cd venv
 python3 -m venv django_portfolio
@@ -21,10 +26,15 @@ sleep 2
 echo "${green}>>> Python venv is activated.${reset}"
 
 #Install requirements
-echo "${green}>>> Installing the requirements.${reset}"
+echo "${green}>>> Installing python packages.${reset}"
 cd ..
 pip install -r requirements.txt
-echo "${green}>>> Requirements are installed.${reset}"
+echo "${green}>>> Python packages are installed.${reset}"
+
+#Collect static files
+echo "${green}>>> Collect static files.${reset}"
+python djportfolio/manage.py collectstatic --noinput
+echo "${green}>>> Static files collected .${reset}"
 
 #Migra database
 echo "${green}>>> Migration the database.${reset}"

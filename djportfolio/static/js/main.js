@@ -66,7 +66,7 @@ window.addEventListener('load', event => {
             lgExpertiseCard,
             lgExpertiseShowLessButton)
         {
-            
+            //hide large cards
             (function () {
                 lgExpertiseShowLessButton.addEventListener("click", function( event ) {
                     lgExpertiseContainer.classList.add("d-none");
@@ -74,9 +74,11 @@ window.addEventListener('load', event => {
                     smExpertiseCard.classList.remove("d-none");
                 }, false);
                 })();
-            
-            (function () {
+
+            //show large hidden cards
+            (function () {    
                 smExpertiseShowMoreButton.addEventListener("click", function( event ) {
+                    window.location.href = "#expertise";
                     lgExpertiseCards.forEach(function (element) {
                         if (!element.classList.contains("d-none")) {
                             element.classList.add("d-none");

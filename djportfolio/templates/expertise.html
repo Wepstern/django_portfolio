@@ -7,18 +7,14 @@
         </div>
         <p class="text-altsecondary py-3">Here are the technologies I like and have worked with in recent years. The values on the progress bar indicate the relative experience.</p>
         <!-- OPENED EXPERTISE -->
-        <div class="row row-cols-1 row-cols-md-1 g-4 py-3 d-none" id="lgExpertiseContainer">
+        <div class="row row-cols-1 row-cols-md-1 g-4 py-3 d-none" id="lgExpertiseContainer" style="min-height: 200px">
             {% for expertise in expertises.all %}
             <div class="col d-none" id="lgExpertiseCard{{ expertise.pk }}">
-                <div class="card h-100">
+                <div class="card h-100 w-100">
                     <div class="card-body bg-altdark">
-                        <div class="row">
-                            <div class="col">
-                                <h4 class="card-title text-altprimary">{{ expertise.skill.name }}<i class="bi bi-cloud text-altprimary px-3"></i></h4>
-                            </div>
-                            <div class="col text-end">
-                                <button type="button" class="btn btn-outline-altprimary" id="lgExpertiseShowLess{{ expertise.pk }}"><i class="bi bi-box-arrow-in-down-left"></i></button>
-                            </div>
+                        <div class="d-flex justify-content-between text-nowrap">
+                            <h5 class="card-title text-altprimary text-nowrap"><i class="bi bi-cloud text-altprimary px-3"></i>{{ expertise.skill.name }}</h5>
+                            <button type="button" class="btn btn-outline-altprimary" id="lgExpertiseShowLess{{ expertise.pk }}"><i class="bi bi-box-arrow-in-down-left"></i></button>
                         </div>
                         <div class="">
                             <p class="card-text text-altsecondary"></i>{{ expertise.description }}</p>
@@ -38,18 +34,14 @@
             {% endfor %}
         </div>
         <!-- CLOSED EXPERTISE -->
-        <div class="row row-cols-1 row-cols-md-3 g-4 py-3" id="smExpertiseContainer"> <!-- remove row-cols-md-3, add row-cols-md-1 -->
+        <div class="row row-cols-1 row-cols-md-2 g-4 py-3" id="smExpertiseContainer">
             {% for expertise in expertises.all %}
             <div class="col" id="smExpertiseCard{{ expertise.pk }}">
-                <div class="card h-100">
+                <div class="card h-100 w-100">
                     <div class="card-body bg-altdark">
-                        <div class="row">
-                            <div class="col">
-                                <h5 class="card-title text-altsecondary"><i class="bi bi-cloud text-altprimary px-3"></i>{{ expertise.skill.name }}</h5>
-                            </div>
-                            <div class="col text-end">
-                                <button type="button" class="btn btn-outline-altprimary" id="smExpertiseShowMore{{ expertise.pk }}"><i class="bi bi-box-arrow-up-right"></i></button>
-                            </div>
+                        <div class="d-flex justify-content-between text-nowrap">
+                            <h5 class="card-title text-altsecondary text-nowrap"><i class="bi bi-cloud text-altprimary px-3"></i>{{ expertise.skill.name }}</h5>
+                            <button class="btn btn-outline-altprimary" id="smExpertiseShowMore{{ expertise.pk }}"><i class="bi bi-box-arrow-up-right"></i></button>
                         </div>
                     </div>
                 </div>

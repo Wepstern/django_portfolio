@@ -2,9 +2,11 @@
 
 <section class="section py-5" id="experience">
     <div class="container-fluid justify-content-md-center py-5">
+        <!-- TITLE -->
         <div class="d-flex">
             <h1 class="text-altlight"><span class="text-altprimary">02. </span>Work Experience</h1>
         </div>
+        <!-- RESUME -->
         <div>
             {% if resume.raw_file|length > 0%}
             <p class="text-altsecondary py-3">Check my experience below or view my <a class="text-altprimary" href="{{ resume.raw_file.url }}" target="_new">resume</a> here.</p>
@@ -12,15 +14,20 @@
             <p class="text-warning py-3">No resume has been uploaded yet. Please upload a resume!</p>
             {% endif %}
         </div>
+        <!-- EXPERIENCE -->
         <div class="gx-0 mb-4 mb-lg-5 align-items-center py-5">
-            <div class="d-flex align-items-start">
+            <div class="row align-items-start">
                 <!-- NAVPILLS ON LEFT SIDE FOR JOB TITLE -->
-                <div class="nav flex-column nav-pills mb-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <div class="nav col-md-3 nav-pills mb-3 d-flex flex-column" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                 {% for job in jobs.all %}
                     {% if forloop.first %}                           
-                    <button class="nav-link experience active" id="v-pills-{{ job.pk }}-tab" data-bs-toggle="pill" data-bs-target="#v-pills-{{ job.pk }}" type="button" role="tab" aria-controls="v-pills-{{ job.pk }}" aria-selected="true">{{ job.position }}</button>
+                    <button class="nav-link experience active" id="v-pills-{{ job.pk }}-tab" data-bs-toggle="pill" data-bs-target="#v-pills-{{ job.pk }}" type="button" role="tab" aria-controls="v-pills-{{ job.pk }}" aria-selected="true">
+                        <div class="text-start">{{ job.position }}</div>
+                    </button>
                     {% else %}
-                    <button class="nav-link experience" id="v-pills-{{ job.pk }}-tab" data-bs-toggle="pill" data-bs-target="#v-pills-{{ job.pk }}" type="button" role="tab" aria-controls="v-pills-{{ job.pk }}" aria-selected="false">{{ job.position }}</button>
+                    <button class="nav-link experience" id="v-pills-{{ job.pk }}-tab" data-bs-toggle="pill" data-bs-target="#v-pills-{{ job.pk }}" type="button" role="tab" aria-controls="v-pills-{{ job.pk }}" aria-selected="false">
+                        <div class="text-start">{{ job.position }}</div>
+                    </button>
                     {% endif %}
                 {% empty %}
                 <div>
@@ -29,7 +36,7 @@
                 {% endfor %}
                 </div>
                 <!-- NAVPILLS CONTENT ON RIGHT SIDE FOR JOB DESCRIPTION -->
-                <div class="tab-content" id="v-pills-tabContent">
+                <div class="col-md-9 tab-content" id="v-pills-tabContent">
                 {% for job in jobs.all %}
                     {% if forloop.first %}
                     <div class="tab-pane fade show active pt-3" id="v-pills-{{ job.pk }}" role="tabpanel" aria-labelledby="v-pills-{{ job.pk }}-tab">

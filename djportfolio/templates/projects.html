@@ -16,7 +16,7 @@
                         <div class="col-md-4 d-flex px-0">
                             <img src="{{ project.preview_image.url }}" class="img-fluid gs-filter project-picture" alt="Picture of the Project">
                         </div>
-                        <div class="col-md-8 d-flex px-5">
+                        <div class="col-md-8 px-5">
                             <div class="align-items-start flex-column">
                                 <div class="card-body" style="height: 85%">
                                     <p class="card-text text-altprimary">Featured Project</p>
@@ -31,7 +31,7 @@
                                 </div>
                                 <div class="card-footer border-altsecondary text-altprimary">
                                     {% for skill in project.skill.all %}
-                                    <span class="badge text-altdark bg-altprimary">{{ skill.name }}</span>
+                                    <span class="badge bg-altdark text-altdark bg-altprimary">{{ skill.name }}</span>
                                     {% endfor %}
                                 </div>    
                             </div>
@@ -42,7 +42,7 @@
                 {% else %}
                 <div class="card mb-3 bg-altdark">
                     <div class="row">
-                        <div class="col-md-8 d-flex px-5">
+                        <div class="col-md-8 px-5">
                             <div class="align-items-start flex-column">
                                 <div class="card-body" style="height: 85%">
                                     <p class="card-text text-altprimary">Featured Project</p>
@@ -55,7 +55,7 @@
                                         {% endfor %}
                                     </div>
                                 </div>
-                                <div class="card-footer border-altsecondary text-altprimary">
+                                <div class="card-footer bg-altdark border-altsecondary text-altprimary">
                                     {% for skill in project.skill.all %}
                                     <span class="badge text-altdark bg-altprimary">{{ skill.name }}</span>
                                     {% endfor %}

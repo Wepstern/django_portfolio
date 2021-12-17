@@ -6,50 +6,102 @@
             <h1 class="text-altlight"><span class="text-altprimary">03. </span>Things I like</h1>
         </div>
         <p class="text-altsecondary py-3">Here are the technologies I like and have worked with in recent years. The values on the progress bar indicate the relative experience.</p>
-        <!-- OPENED EXPERTISE -->
-        <div class="row row-cols-1 row-cols-md-1 g-4 py-3 d-none" id="lgExpertiseContainer" style="min-height: 200px">
-            {% for expertise in expertises.all %}
-            <div class="col d-none" id="lgExpertiseCard{{ expertise.pk }}">
-                <div class="card h-100 w-100">
-                    <div class="card-body bg-altdark">
-                        <div class="d-flex justify-content-between text-nowrap">
-                            <h5 class="card-title text-altprimary text-nowrap"><i class="bi bi-cloud text-altprimary px-3"></i>{{ expertise.skill.name }}</h5>
-                            <button type="button" class="btn btn-outline-altprimary" id="lgExpertiseShowLess{{ expertise.pk }}"><i class="bi bi-box-arrow-in-down-left"></i></button>
-                        </div>
-                        <div class="">
-                            <p class="card-text text-altsecondary"></i>{{ expertise.description }}</p>
-                            {% if expertise.certificate.all %}
-                            <p class="text-altprimary">Certificates:</p>
-                            {% endif %}
-                            {% for certificate in expertise.certificate.all %}
-                            <p class="text-altsecondary"><i class="bi bi-chevron-right text-altprimary py-1"></i>{{ certificate.certificate_authority }}: {{ certificate.name }}</p>
-                            {% endfor %}
-                            <div class="progress">
-                                <div class="progress-bar bg-altprimary" id="lgSkillProgressBar{{ expertise.pk}}" role="progressbar" style="width: {{ expertise.percentage }}%" aria-valuenow="{{ expertise.percentage }}" aria-valuemin="0" aria-valuemax="100"></div>
+        <!-- EXPERTISE -->
+         <!-- Screen Size > MD-->
+        <div class="d-none d-md-block">
+            <!-- OPENED EXPERTISE -->
+            <div class="row row-cols-1 row-cols-md-1 g-4 py-3 d-none" id="lgExpertiseContainer" style="min-height: 200px">
+                {% for expertise in expertises.all %}
+                <div class="col d-none" id="lgExpertiseCard{{ expertise.pk }}">
+                    <div class="card h-100 w-100">
+                        <div class="card-body bg-altdark">
+                            <div class="d-flex justify-content-between text-nowrap">
+                                <h5 class="card-title text-altprimary text-nowrap"><i class="bi bi-cloud text-altprimary px-3"></i>{{ expertise.skill.name }}</h5>
+                                <button type="button" class="btn btn-outline-altprimary" id="lgExpertiseShowLess{{ expertise.pk }}"><i class="bi bi-box-arrow-in-down-left"></i></button>
+                            </div>
+                            <div class="">
+                                <p class="card-text text-altsecondary"></i>{{ expertise.description }}</p>
+                                {% if expertise.certificate.all %}
+                                <p class="text-altprimary">Certificates:</p>
+                                {% endif %}
+                                {% for certificate in expertise.certificate.all %}
+                                <p class="text-altsecondary"><i class="bi bi-chevron-right text-altprimary py-1"></i>{{ certificate.certificate_authority }}: {{ certificate.name }}</p>
+                                {% endfor %}
+                                <div class="progress">
+                                    <div class="progress-bar bg-altprimary" id="lgSkillProgressBar{{ expertise.pk}}" role="progressbar" style="width: {{ expertise.percentage }}%" aria-valuenow="{{ expertise.percentage }}" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                {% endfor %}
             </div>
-            {% endfor %}
-        </div>
-        <!-- CLOSED EXPERTISE -->
-        <div class="row row-cols-1 row-cols-md-2 g-4 py-3" id="smExpertiseContainer">
-            {% for expertise in expertises.all %}
-            <div class="col" id="smExpertiseCard{{ expertise.pk }}">
-                <div class="card h-100 w-100">
-                    <div class="card-body bg-altdark">
-                        <div class="d-flex justify-content-between text-nowrap">
-                            <h5 class="card-title text-altsecondary text-nowrap"><i class="bi bi-cloud text-altprimary px-3"></i>{{ expertise.skill.name }}</h5>
-                            <button class="btn btn-outline-altprimary" id="smExpertiseShowMore{{ expertise.pk }}"><i class="bi bi-box-arrow-up-right"></i></button>
+            <!-- CLOSED EXPERTISE -->
+            <div class="row row-cols-1 row-cols-md-2 g-4 py-3" id="smExpertiseContainer">
+                {% for expertise in expertises.all %}
+                <div class="col" id="smExpertiseCard{{ expertise.pk }}">
+                    <div class="card h-100 w-100">
+                        <div class="card-body bg-altdark">
+                            <div class="d-flex justify-content-between text-nowrap">
+                                <h5 class="card-title text-altsecondary text-nowrap"><i class="bi bi-cloud text-altprimary px-3"></i>{{ expertise.skill.name }}</h5>
+                                <button class="btn btn-outline-altprimary" id="smExpertiseShowMore{{ expertise.pk }}"><i class="bi bi-box-arrow-up-right"></i></button>
+                            </div>
                         </div>
                     </div>
                 </div>
+                {% empty %}
+                <!-- EMPTY -->
+                <div>
+                    <p class="text-warning">No expertise has been created yet. Please create an expertise.</p>
+                </div>
+                {% endfor %}
             </div>
-            {% empty %}
-            <div>
-                <p class="text-warning">No expertise has been created yet. Please create an expertise.</p>
-            </div>
-            {% endfor %}
         </div>
+         <!-- Screen Size < MD-->
+        <div class="d-md-none">
+            <div class="row row-cols-1 row-cols-md-2 g-4 py-3" id="smExpertiseContainer">
+                {% for expertise in expertises.all %}
+                <!-- OPENED EXPERTISE -->
+                <div class="col d-none" id="lgExpertiseCard{{ expertise.pk }}">
+                    <div class="card h-100 w-100">
+                        <div class="card-body bg-altdark">
+                            <div class="d-flex justify-content-between text-nowrap">
+                                <h5 class="card-title text-altprimary text-nowrap"><i class="bi bi-cloud text-altprimary px-1"></i>{{ expertise.skill.name }}</h5>
+                                <button type="button" class="btn btn-outline-altprimary" id="lgExpertiseShowLess{{ expertise.pk }}"><i class="bi bi-box-arrow-in-down-left"></i></button>
+                            </div>
+                            <div class="">
+                                <p class="card-text text-altsecondary"></i>{{ expertise.description }}</p>
+                                {% if expertise.certificate.all %}
+                                <p class="text-altprimary">Certificates:</p>
+                                {% endif %}
+                                {% for certificate in expertise.certificate.all %}
+                                <p class="text-altsecondary"><i class="bi bi-chevron-right text-altprimary py-1"></i>{{ certificate.certificate_authority }}: {{ certificate.name }}</p>
+                                {% endfor %}
+                                <div class="progress">
+                                    <div class="progress-bar bg-altprimary" id="lgSkillProgressBar{{ expertise.pk}}" role="progressbar" style="width: {{ expertise.percentage }}%" aria-valuenow="{{ expertise.percentage }}" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- CLOSED EXPERTISE -->
+                <div class="col" id="smExpertiseCard{{ expertise.pk }}">
+                    <div class="card h-100 w-100">
+                        <div class="card-body bg-altdark">
+                            <div class="d-flex justify-content-between text-nowrap">
+                                <h5 class="card-title text-altsecondary text-nowrap"><i class="bi bi-cloud text-altprimary px-1"></i>{{ expertise.skill.name }}</h5>
+                                <button type="button" class="btn btn-outline-altprimary" id="smExpertiseShowMore{{ expertise.pk }}"><i class="bi bi-box-arrow-up-right"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <!-- EMPTY -->
+                <div>
+                    <p class="text-warning">No expertise has been created yet. Please create an expertise.</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
 </section>

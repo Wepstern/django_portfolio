@@ -1,22 +1,23 @@
 # Portfolio Website with Django
-This project is a simple one-page website written in Django where you can share your resume, projects and expertise. The project relies on Bootstrap on the frontend side and the Pytest framework on the testing side.
+This project is a simple one-page website where you can share your resume, projects, ideas and expertise. The project is written in Django, relies on Bootstrap on the frontend side and the Pytest framework on the testing side. The Continuous integration and delivery processes rely on GitHub Actions, Heroku and Cloudinary.
 
 Currently the page can be loaded with data via the Django builtin admin site, but in the future I would like to enable this directly via a dedicated admin site where the uploaded data and the result of the page formatting can be seen immediately.
 
- :warning: **The development envrionment description is not up-to-date!** :warning:
-
 ## Development Environment
-The following steps below are used to create the development environment. Currently the project is only macOS "friendly", because the helper scripsts are written in shell, and the pre-commit and pre-push scripts are relay on it. I do not plan to implement the project on the "Windows way", because I want to containerise the project in the future.
+The django project currently has three settings
+- One for local, development environment: ./djportfolio/djportfolio/settings.py
+- One for local, test environment: ./djportfolio/djportfolio/test_settings.py
+- One for production environment: ./djportfolio/djportfolio/production_settings.py
 
-After completing the following steps git pre-commit and pre-push will run automatically tests and create coverage report.
+You can easily create the local, test and development environment using helperscripts. Currently the project is only macOS "friendly", because the helper scripsts are written in shell. I do not plan to implement the project on the "Windows way", because I want to containerise the project in the future.
 
-Due to the size of the project, flawless test execution and 100% coverage is mandatory for admin.py, models.py and views.py to perform commit and push operations. Currently the project has no UI test, but I will change that in the future.
+Before running the scripts, the following environment variables must be set for django super user creation (email, name, password).
 
-Installing the development environment creates the Django server superuser, and its data like name, email and password are derived from three environment variables that you must set in your bash profile.
-
+Open your zprofile
 ```bash
 % open ~/.zprofile
 ```
+
 Add the three new line below to zprofile, then save it and restart your terminal.
 ```bash
 export DP_SUPERUSER_NAME=[name_of_superuser]
@@ -24,22 +25,23 @@ export DP_SUPERUSER_EMAIL=[email_of_superuser]
 export DP_SUPERUSER_PASSWORD=[password_of_superuser]
 ```
 
-Setting up a development environment manually
-```bash
-django_portfolio % mkdir venv
-django_portfolio % python -m venv venv/django_portfolio
-django_portfolio % source venv/django_portfolio/bin/activate
-django_portfolio % pip install -r requirements.txt
-django_portfolio % python djportfolio/manage.py migrate
-django_portfolio % python djportfolio/manage.py makemigrations
-django_portfolio % git config core.hooksPath ../.githooks
-django_portfolio % python djportfolio/manage.py createsuperuser
-```
-
 Setting up a development environment using helper scripts
 ```bash
 scripts % ./install_dev_env.sh
 ```
+
+The helper scripts will ...
+- Install locally the npm packages specified in the package.json file (bootstrap, bootstrap-icons, popperjs/core)
+- Create a python virtual environment and install locally the python packages specified in the requirements.txt
+- Collect django static files
+- Migrate django databse
+- Create django superuser
+
+... and, you are ready to work! 
+
+After completing the following steps git pre-commit and pre-push will run automatically tests and create coverage report. Due to the size of the project, flawless test execution and 100% coverage is mandatory for admin.py, models.py and views.py to perform commit and push operations. Currently the project has no UI test, but I will change that in the future.
+
+<i>Manually development environment creation - Under construction...</i>
 
 ### Running tests
 Tests can be run in three ways: manually, with helper scripts, with commit and push processes. The latter is mandatory. The results of test runs and code coverage are logged. If you use the helper scripts, the coverage report will open automatically in your browser.

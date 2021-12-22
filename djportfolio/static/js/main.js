@@ -53,68 +53,118 @@ window.addEventListener('load', event => {
         }, false);
     });
 
+    // Experience on click
+    let vPillsSmallJob = document.querySelectorAll('[id^=v-pills-small-job-]');
+    let vPillsJob = document.querySelectorAll('[id^=v-pills-job-]');
+
+    vPillsSmallJob.forEach(function(element) {
+        element.addEventListener("click", function( event ) {
+            let splittedId = element.id.split("v-pills-small-job-");
+            let vPillJob = document.getElementById("v-pills-job-" + splittedId[1]);
+            vPillJob.click();
+        }, false);
+    });
+
+    vPillsJob.forEach(function(element) {
+        element.addEventListener("click", function( event ) {
+            let splittedId = element.id.split("v-pills-job-");
+            let vPillJob = document.getElementById("v-pills-small-job-" + splittedId[1]);
+            vPillJob.click();
+        }, false);
+    });
+
     // Expertise cards
     class Card {
         constructor(
-            // Card view small
-            smExpertiseCards,
-            smExpertiseCard,
-            smExpertiseShowMoreButton,
-            // Card view large
-            lgExpertiseContainer,
-            lgExpertiseCards,
-            lgExpertiseCard,
-            lgExpertiseShowLessButton)
+            // Card closed view small
+            smClosedExpertiseCards,
+            smClosedExpertiseCard,
+            smClosedExpertiseShowMoreButton,
+            // Card opened view small
+            smOpenedExpertiseCards,
+            smOpenedExpertiseCard,
+            smOpenedExpertiseShowLessButton,
+            // Card opened view large
+            lgOpenedExpertiseContainer,
+            lgOpenedExpertiseCards,
+            lgOpenedExpertiseCard,
+            lgOpenedExpertiseShowLessButton)
         {
-            
+
+            //hide opened small cards
             (function () {
-                lgExpertiseShowLessButton.addEventListener("click", function( event ) {
-                    lgExpertiseContainer.classList.add("d-none");
-                    lgExpertiseCard.classList.add("d-none");
-                    smExpertiseCard.classList.remove("d-none");
+                smOpenedExpertiseShowLessButton.addEventListener("click", function( event ) {
+                    smOpenedExpertiseCard.classList.add("d-none");
+                    smClosedExpertiseCard.classList.remove("d-none");
                 }, false);
-                })();
-            
+            })();
+
+            //hide opened large cards
             (function () {
-                smExpertiseShowMoreButton.addEventListener("click", function( event ) {
-                    lgExpertiseCards.forEach(function (element) {
+                lgOpenedExpertiseShowLessButton.addEventListener("click", function( event ) {
+                    lgOpenedExpertiseContainer.classList.add("d-none");
+                    lgOpenedExpertiseCard.classList.add("d-none");
+                    smClosedExpertiseCard.classList.remove("d-none");
+                }, false);
+            })();
+
+            //show opened large adn small hidden cards
+            (function () {    
+                smClosedExpertiseShowMoreButton.addEventListener("click", function( event ) {
+                    lgOpenedExpertiseCards.forEach(function (element) {
                         if (!element.classList.contains("d-none")) {
                             element.classList.add("d-none");
                         }
                     })
-                    smExpertiseCards.forEach(function (element) {
+                    smOpenedExpertiseCards.forEach(function (element) {
+                        if (!element.classList.contains("d-none")) {
+                            element.classList.add("d-none");
+                        }
+                    })
+                    smClosedExpertiseCards.forEach(function (element) {
                         if (element.classList.contains("d-none")) {
                             element.classList.remove("d-none");
                         }
                     })
-                    lgExpertiseContainer.classList.remove("d-none");
-                    lgExpertiseCard.classList.remove("d-none");
-                    smExpertiseCard.classList.add("d-none");
+                    lgOpenedExpertiseContainer.classList.remove("d-none");
+                    lgOpenedExpertiseCard.classList.remove("d-none");
 
+                    smOpenedExpertiseCard.classList.remove("d-none");
+
+                    smClosedExpertiseCard.classList.add("d-none");
                 }, false);
                 })();
         }
     }
 
-    //  Card view small
-    let smExpertiseCards = document.querySelectorAll('[id^=smExpertiseCard]');
-    let smExpertiseShowMoreButtons = document.querySelectorAll('[id^=smExpertiseShowMore]');
+    //  Card closed view small
+    let smClosedExpertiseCards = document.querySelectorAll('[id^=smClosedExpertiseCard]');
+    let smClosedExpertiseShowMoreButtons = document.querySelectorAll('[id^=smClosedExpertiseShowMore]');
 
-    // Card view large
-    let lgExpertiseContainer = document.getElementById("lgExpertiseContainer");
-    let lgExpertiseCards = document.querySelectorAll('[id^=lgExpertiseCard]');
-    let lgExpertiseShowLessButtons = document.querySelectorAll('[id^=lgExpertiseShowLess]');
+    // Card opened view small
+    let smOpenedExpertiseCards = document.querySelectorAll('[id^=smOpenedExpertiseCard]');
+    let smOpenedExpertiseShowLessButtons = document.querySelectorAll('[id^=smOpenedExpertiseShowLess]');
 
-    for (let i = 0; i < smExpertiseCards.length; i++) {
+    // Card opened view large
+    let lgOpenedExpertiseContainer = document.getElementById("lgOpenedExpertiseContainer");
+    let lgOpenedExpertiseCards = document.querySelectorAll('[id^=lgOpenedExpertiseCard]');
+    let lgOpenedExpertiseShowLessButtons = document.querySelectorAll('[id^=lgOpenedExpertiseShowLess]');
+
+    for (let i = 0; i < smClosedExpertiseCards.length; i++) {
         let card = new Card(
-            //  Card view small 
-            smExpertiseCards,
-            smExpertiseCards[i],
-            smExpertiseShowMoreButtons[i], 
-            // Card view large
-            lgExpertiseContainer,
-            lgExpertiseCards,
-            lgExpertiseCards[i],
-            lgExpertiseShowLessButtons[i])
+            //  Card closed view small 
+            smClosedExpertiseCards,
+            smClosedExpertiseCards[i],
+            smClosedExpertiseShowMoreButtons[i], 
+            // Card opened view small
+            smOpenedExpertiseCards,
+            smOpenedExpertiseCards[i],
+            smOpenedExpertiseShowLessButtons[i],
+            // Card opened view large
+            lgOpenedExpertiseContainer,
+            lgOpenedExpertiseCards,
+            lgOpenedExpertiseCards[i],
+            lgOpenedExpertiseShowLessButtons[i]
+        )
     }
 });

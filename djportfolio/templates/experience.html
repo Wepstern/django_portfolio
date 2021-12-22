@@ -7,7 +7,7 @@
             <h1 class="text-altlight"><span class="text-altprimary">02. </span>Work Experience</h1>
         </div>
         <!-- RESUME -->
-        <div>
+        <div class="d-flex">
             {% if resume.raw_file|length > 0%}
             <p class="text-altsecondary py-3">Check my experience below or view my <a class="text-altprimary" href="{{ resume.raw_file.url }}" target="_new">resume</a> here.</p>
             {% else %}
@@ -15,67 +15,85 @@
             {% endif %}
         </div>
         <!-- EXPERIENCE -->
-        <div class="gx-0 mb-4 mb-lg-5 align-items-center py-5">
-            <div class="row align-items-start">
-                <!-- NAVPILLS ON LEFT SIDE FOR JOB TITLE -->
-                <div class="nav col-md-3 nav-pills mb-3 d-flex flex-column" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+        <!-- Screen Size > MD-->
+        <div class="d-flex align-items-start d-none d-md-flex">
+            <div class="nav flex-column col-3 nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            {% for job in jobs.all %}
+                {% if forloop.first %}
+                <button class="nav-link text-start experience active" id="v-pills-job-{{ job.pk }}-tab" data-bs-toggle="pill" data-bs-target="#v-pills-job-{{ job.pk }}" type="button" role="tab" aria-controls="v-pills-job-{{ job.pk }}" aria-selected="true">{{ job.position }}</button>
+                {% else %}
+                <button class="nav-link text-start experience" id="v-pills-job-{{ job.pk }}-tab" data-bs-toggle="pill" data-bs-target="#v-pills-job-{{ job.pk }}" type="button" role="tab" aria-controls="v-pills-job-{{ job.pk }}" aria-selected="false">{{ job.position }}</button>
+                {% endif %}
+            {% endfor %}
+            </div>
+            <div class="tab-content" id="v-pills-tabContent">
+            {% for job in jobs.all %}
+                {% if forloop.first %} 
+                <div class="tab-pane text-start fade show active" id="v-pills-job-{{ job.pk }}" role="tabpanel" aria-labelledby="v-pills-job-{{ job.pk }}-tab">
+                    <div class="pb-1 text-altsecondary">{{ job.work_from }} - {{ job.work_till|default_if_none:"" }}</div>
+                    <h3 class="pb-1 text-altprimary">{{ job.position }}</h3>
+                    <h4 class="pb-4 text-altsecondary">{{ job.company }}</h5>
+                    {% for task in job.task.all %}
+                    <p class="text-altsecondary"><i class="bi bi-chevron-right text-altprimary py-1"></i>{{ task.description }}</p>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <div class="tab-pane text-start fade" id="v-pills-job-{{ job.pk }}" role="tabpanel" aria-labelledby="v-pills-job-{{ job.pk }}-tab">
+                    <div class="pb-1 text-altsecondary">{{ job.work_from }} - {{ job.work_till|default_if_none:"" }}</div>
+                    <h3 class="pb-1 text-altprimary">{{ job.position }}</h3>
+                    <h4 class="pb-4 text-altsecondary">{{ job.company }}</h5>
+                    {% for task in job.task.all %}
+                    <p class="text-altsecondary"><i class="bi bi-chevron-right text-altprimary py-1"></i>{{ task.description }}</p>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            {% empty %}
+            <div>
+                <p class="text-warning">No job experience has been created yet. Please create a job experience.</p>
+            </div>
+            {% endfor %}
+            </div>
+        </div>
+        <!-- Screen Size < MD-->
+        <div class="d-flex align-items-start border-bottom d-md-none">
+            <div class="nav nav-pills nav-justified me-3 d-flex flex-nowrap" id="v-pills-tab" role="tablist" aria-orientation="vertical" style="white-space: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch;">
+                    {% for job in jobs.all %}
+                        {% if forloop.first %}
+                        <a class="nav-link experience active" data-bs-toggle="pill" data-bs-target="#v-pills-small-job-{{ job.pk }}" type="button" role="tab" aria-controls="v-pills-small-job-{{ job.pk }}" aria-selected="true">{{ job.position }}</a>
+                        {% else %}
+                        <a class="nav-link experience" id="v-pills-small-job-{{ job.pk }}-tab" data-bs-toggle="pill" data-bs-target="#v-pills-small-job-{{ job.pk }}" type="button" role="tab" aria-controls="v-pills-small-job-{{ job.pk }}" aria-selected="false">{{ job.position }}</a>
+                        {% endif %}
+                    {% endfor %}
+            </div>
+        </div>
+        <div class="d-flex align-items-start d-md-none pt-5">
+            <div class="tab-content" id="v-pills-tabContent">
                 {% for job in jobs.all %}
-                    {% if forloop.first %}                           
-                    <button class="nav-link experience active" id="v-pills-{{ job.pk }}-tab" data-bs-toggle="pill" data-bs-target="#v-pills-{{ job.pk }}" type="button" role="tab" aria-controls="v-pills-{{ job.pk }}" aria-selected="true">
-                        <div class="text-start">{{ job.position }}</div>
-                    </button>
+                    {% if forloop.first %} 
+                    <div class="tab-pane text-start fade show active" id="v-pills-small-job-{{ job.pk }}" role="tabpanel" aria-labelledby="v-pills-small-job-{{ job.pk }}-tab">
+                        <div class="pb-1 text-altsecondary">{{ job.work_from }} - {{ job.work_till|default_if_none:"" }}</div>
+                        <h3 class="pb-1 text-altprimary">{{ job.position }}</h3>
+                        <h4 class="pb-4 text-altsecondary">{{ job.company }}</h5>
+                        {% for task in job.task.all %}
+                        <p class="text-altsecondary"><i class="bi bi-chevron-right text-altprimary py-1"></i>{{ task.description }}</p>
+                        {% endfor %}
+                    </div>
                     {% else %}
-                    <button class="nav-link experience" id="v-pills-{{ job.pk }}-tab" data-bs-toggle="pill" data-bs-target="#v-pills-{{ job.pk }}" type="button" role="tab" aria-controls="v-pills-{{ job.pk }}" aria-selected="false">
-                        <div class="text-start">{{ job.position }}</div>
-                    </button>
+                    <div class="tab-pane text-start fade" id="v-pills-small-job-{{ job.pk }}" role="tabpanel" aria-labelledby="v-pills-small-job-{{ job.pk }}-tab">
+                        <div class="pb-1 text-altsecondary">{{ job.work_from }} - {{ job.work_till|default_if_none:"" }}</div>
+                        <h3 class="pb-1 text-altprimary">{{ job.position }}</h3>
+                        <h4 class="pb-4 text-altsecondary">{{ job.company }}</h5>
+                        {% for task in job.task.all %}
+                        <p class="text-altsecondary"><i class="bi bi-chevron-right text-altprimary py-1"></i>{{ task.description }}</p>
+                        {% endfor %}
+                    </div>
                     {% endif %}
                 {% empty %}
                 <div>
                     <p class="text-warning">No job experience has been created yet. Please create a job experience.</p>
                 </div>
                 {% endfor %}
-                </div>
-                <!-- NAVPILLS CONTENT ON RIGHT SIDE FOR JOB DESCRIPTION -->
-                <div class="col-md-9 tab-content" id="v-pills-tabContent">
-                {% for job in jobs.all %}
-                    {% if forloop.first %}
-                    <div class="tab-pane fade show active pt-3" id="v-pills-{{ job.pk }}" role="tabpanel" aria-labelledby="v-pills-{{ job.pk }}-tab">
-                        <div class="container-fluid">
-                            <div class="">
-                                <div class="pb-1 text-altsecondary">{{ job.work_from }} - {{ job.work_till|default_if_none:"" }}</div>
-                                <div>
-                                    <h3 class="pb-1 text-altprimary">{{ job.position }}</h3>
-                                    <h4 class="pb-4 text-altsecondary">{{ job.company }}</h5>
-                                </div>
-                            </div>
-                            <div class="">
-                                {% for task in job.task.all %}
-                                <p class="text-altsecondary"><i class="bi bi-chevron-right text-altprimary py-1"></i>{{ task.description }}</p>
-                                {% endfor %}
-                            </div>
-                        </div>
-                    </div>
-                    {% else %}
-                    <div class="tab-pane fade pt-3" id="v-pills-{{ job.pk }}" role="tabpanel" aria-labelledby="v-pills-{{ job.pk }}-tab">
-                        <div class="container-fluid">
-                            <div class="">
-                                <div class="pb-1 text-altsecondary">{{ job.work_from }} - {{ job.work_till|default_if_none:"" }}</div>
-                                <div>
-                                    <h3 class="pb-1 text-altprimary">{{ job.position }}</h3>
-                                    <h4 class="pb-4 text-altsecondary">{{ job.company }}</h5>
-                                </div>
-                            </div>
-                            <div class="">
-                                {% for task in job.task.all %}
-                                <p class="text-altsecondary"><i class="bi bi-chevron-right text-altprimary py-1"></i>{{ task.description }}</p>
-                                {% endfor %}
-                            </div>
-                        </div>
-                    </div>
-                    {% endif %}
-                {% endfor %}
-                </div>
-              </div>
+            </div>
         </div>
     </div>
 </section>

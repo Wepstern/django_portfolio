@@ -56,15 +56,19 @@
         </div>
         <!-- Screen Size < MD-->
         <div class="d-flex align-items-start border-bottom d-md-none">
-            <div class="nav nav-pills nav-justified me-3 d-flex flex-nowrap" id="v-pills-tab" role="tablist" aria-orientation="vertical" style="white-space: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch;">
-                    {% for job in jobs.all %}
-                        {% if forloop.first %}
-                        <a class="nav-link experience active" data-bs-toggle="pill" data-bs-target="#v-pills-small-job-{{ job.pk }}" type="button" role="tab" aria-controls="v-pills-small-job-{{ job.pk }}" aria-selected="true">{{ job.position }}</a>
-                        {% else %}
-                        <a class="nav-link experience" id="v-pills-small-job-{{ job.pk }}-tab" data-bs-toggle="pill" data-bs-target="#v-pills-small-job-{{ job.pk }}" type="button" role="tab" aria-controls="v-pills-small-job-{{ job.pk }}" aria-selected="false">{{ job.position }}</a>
-                        {% endif %}
-                    {% endfor %}
-            </div>
+            <ul class="nav nav-pills nav-justified me-3 d-flex flex-nowrap" id="v-pills-tab" role="tablist" aria-orientation="vertical" style="white-space: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch;">
+            {% for job in jobs.all %}
+                {% if forloop.first %}
+                <li class="nav-item">
+                    <a class="nav-link experience active" data-bs-toggle="pill" data-bs-target="#v-pills-small-job-{{ job.pk }}" role="tab" aria-controls="v-pills-small-job-{{ job.pk }}" aria-selected="true">{{ job.position }}</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link experience" id="v-pills-small-job-{{ job.pk }}-tab" data-bs-toggle="pill" data-bs-target="#v-pills-small-job-{{ job.pk }}" role="tab" aria-controls="v-pills-small-job-{{ job.pk }}" aria-selected="false">{{ job.position }}</a>
+                </li>
+                {% endif %}
+            {% endfor %}
+            </ul>
         </div>
         <div class="d-flex align-items-start d-md-none pt-5">
             <div class="tab-content" id="v-pills-tabContent">

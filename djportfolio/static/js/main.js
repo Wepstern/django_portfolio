@@ -53,6 +53,26 @@ window.addEventListener('load', event => {
         }, false);
     });
 
+    // Experience on click
+    let vPillsSmallJob = document.querySelectorAll('[id^=v-pills-small-job-]');
+    let vPillsJob = document.querySelectorAll('[id^=v-pills-job-]');
+
+    vPillsSmallJob.forEach(function(element) {
+        element.addEventListener("click", function( event ) {
+            let splittedId = element.id.split("v-pills-small-job-");
+            let vPillJob = document.getElementById("v-pills-job-" + splittedId[1]);
+            vPillJob.click();
+        }, false);
+    });
+
+    vPillsJob.forEach(function(element) {
+        element.addEventListener("click", function( event ) {
+            let splittedId = element.id.split("v-pills-job-");
+            let vPillJob = document.getElementById("v-pills-small-job-" + splittedId[1]);
+            vPillJob.click();
+        }, false);
+    });
+
     // Expertise cards
     class Card {
         constructor(

@@ -7,7 +7,7 @@
         </div>
         <p class="text-altsecondary py-3">Here are the technologies I like and have worked with in recent years. The values on the progress bar indicate the relative experience.</p>
         <!-- EXPERTISE -->
-        <!-- ha nagyobb mint md, ez latszik -->
+        <!-- size > md -->
         <div class="d-none d-md-block">
             <div class="row row-cols-1 row-cols-md-1 g-4 py-3 d-none" id="lgOpenedExpertiseContainer" style="min-height: 200px">
                 {% for expertise in expertises.all %}
@@ -49,7 +49,7 @@
                     </div>
                 </div>
             </div>
-            <!-- ha kisebb mint md, ez latszik -->
+            <!-- size < md -->
             <div class="col d-none d-md-none" id="smOpenedExpertiseCard{{ expertise.pk }}">
                 <div class="card h-100 w-100">
                     <div class="card-body bg-altdark">

@@ -41,7 +41,7 @@ The helper scripts will ...
 
 After completing the following steps git pre-commit and pre-push will run automatically tests and create coverage report. Due to the size of the project, flawless test execution and 100% coverage is mandatory for admin.py, models.py and views.py to perform commit and push operations. Currently the project has no UI test, but I will change that in the future.
 
-<i>Manually development environment creation - Under construction...</i>
+<i>Manually development environment creation is under construction...</i>
 
 ### Running tests
 Tests can be run in three ways: manually, with helper scripts, with commit and push processes. The latter is mandatory. The results of test runs and code coverage are logged. If you use the helper scripts, the coverage report will open automatically in your browser.

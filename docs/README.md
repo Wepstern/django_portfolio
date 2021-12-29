@@ -115,7 +115,7 @@ To run the site you will need...
 <b>3. Heroku configuration</b>
 - Create a Heroku account
 - Create a new Heroku application and get HEROKU_API_TOKEN and HEROKU_APP_NAME secrets
-- Create a new Heroku Dyno with the configuration web gunicorn <i>--pythonpath djportfolio djportfolio.wsgi --log-file=-</i>
+- Create a new Heroku Dyno with the configuration <i>web gunicorn --pythonpath djportfolio djportfolio.wsgi --log-file=-</i>
 - Install a Heroku Postgres add-on, and get DATABASE_URL, DB_HOST, DB_NAME, DB_PASSWORD, DB_PORT, DB_USER secrets
 - Add the secrets below to the Heroku application Config Vars
     - CLOUDINARY_API_KEY: The Cloudinary API_KEY secret

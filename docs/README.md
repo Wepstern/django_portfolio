@@ -58,7 +58,7 @@ django_portfolio % python djportfolio/manage.py createsuperuser
 django_portfolio % git config core.hooksPath .githooks
 ```
 
-... and, you are ready to work!
+... and, you are ready to work! This results in settings equivalent to the flow utility scripts.
 
 ### Running tests
 Tests can be run in three ways: manually, with helper scripts, with commit and push processes. The latter is mandatory. The results of test runs and code coverage are logged. If you use the helper scripts, the coverage report will open automatically in your browser.

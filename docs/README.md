@@ -133,13 +133,13 @@ To run the site you will need...
     - DJANGO_SECRET_KEY: The Django application secret key
     - DJANGO_SETTINGS_MODULE: djportfolio.production_settings
     - EMAIL_HOST: smtp.gmail.com
-    - EMAIL_HOST_PASSWORD: The password of the Google account
+    - EMAIL_HOST_PASSWORD: The password of the Gmail account
     - EMAIL_HOST_USER: The address of the Gmail account
     - EMAIL_PORT: 587
     - EMAIL_USE_TLS: True
 
 <b>4. GitHub repository and GitHub Actions vonfiguration</b>
-- Create a github account if you don't already have one
+- Create a GitHub account if you don't already have one
 - Fork this repository
 - The GitHub Actions workflow is described in the .github/workflows/django.yml file. You don't have to do anything with this, but it's worth a look at what's happening under the hood
 - You need to specify the following two secrets in GitHub repository secret HEROKU_API_TOKEN, HEROKU_APP_NAME

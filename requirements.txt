@@ -11,12 +11,16 @@ colorama==0.4.4
 coverage==6.1.1
 cryptography==35.0.0
 decorator==5.1.0
+defusedxml==0.7.1
+diff-match-patch==20200713
 dj-database-url==0.5.0
 Django==3.2.8
 django-appconf==1.0.5
 django-cloudinary-storage==0.3.0
 django-compressor==2.4.1
+django-import-export==2.7.1
 django-libsass==0.9
+et-xmlfile==1.1.0
 Faker==9.8.0
 gunicorn==20.1.0
 h11==0.12.0
@@ -26,8 +30,11 @@ ipdb==0.13.9
 ipython==7.29.0
 jedi==0.18.0
 libsass==0.21.0
+MarkupPy==1.14
 matplotlib-inline==0.1.3
 mixer==7.2.0
+odfpy==1.4.1
+openpyxl==3.0.9
 outcome==1.1.0
 packaging==21.2
 parso==0.8.2
@@ -50,6 +57,7 @@ git+git://github.com/mverteuil/pytest-ipdb.git
 pytest-reporter==0.4.0
 python-dateutil==2.8.2
 pytz==2021.3
+PyYAML==6.0
 rcssmin==1.0.6
 requests==2.26.0
 rjsmin==1.1.0
@@ -58,6 +66,7 @@ six==1.16.0
 sniffio==1.2.0
 sortedcontainers==2.4.0
 sqlparse==0.4.2
+tablib==3.1.0
 text-unidecode==1.3
 toml==0.10.2
 tomli==1.2.2
@@ -68,3 +77,5 @@ urllib3==1.26.7
 wcwidth==0.2.5
 whitenoise==5.3.0
 wsproto==1.0.0
+xlrd==2.0.1
+xlwt==1.3.0

@@ -1,0 +1,14 @@
+- model: portfolio.user
+  pk: 44e6eaf7-d85b-4eb0-ba49-c0eb1560c3f7
+  fields:
+    first_name: John
+    last_name: Doe
+    birth_date: 1970-01-01
+    profile_picture: profile_picture.jpg
+    sex: Male
+    facebook: 'https://www.facebook.com'
+    linkedin: 'https://www.linkedin.com'
+    github: 'https://github.com'
+    instagram: 'https://www.instagram.com'
+    behance: 'https://www.behance.net'
+    email: 'testmail@mail.com'

@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'portfolio.apps.PortfolioConfig',
     'compressor',
+    'import_export',
 ]
 
 MIDDLEWARE = [

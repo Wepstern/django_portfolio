@@ -70,6 +70,7 @@ INSTALLED_APPS = [
     'compressor',
     'cloudinary',
     'cloudinary_storage',
+    'import_export',
 ]
 
 MIDDLEWARE = [

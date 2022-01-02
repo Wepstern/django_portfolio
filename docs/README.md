@@ -152,7 +152,7 @@ To run the site you will need...
 # Export / Import Database
 You can easily import / export data on the administrator site with the help of [Django import / export](https://django-import-export.readthedocs.io/en/latest/) application and library that is added to my project.
 
-Another way to create and restore a backup is to use Django [fixtures](https://docs.djangoproject.com/en/4.0/howto/initial-data/). Currently all applications use the default location of fixutre, which in this case is the fixtures folder in the application folder. It is important to note that data uploading is not automatic from these folder.
+Another way to create and restore a backup is to use Django [fixtures](https://docs.djangoproject.com/en/4.0/howto/initial-data/). Currently all applications use the default location of fixutre, which in this case is the fixtures folder in the application folder. It is important to note that data uploading is not automatic from these folders.
 
 Dump all data for backup:
 ```bash

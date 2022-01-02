@@ -8,6 +8,9 @@ The Django project currently has three settings:
 - One for local, test environment: ./djportfolio/djportfolio/test_settings.py
 - One for production environment: ./djportfolio/djportfolio/production_settings.py
 
+# My Live Site
+You can check my live site [here](https://dj-portfolio-gergo-balogh.herokuapp.com). All comments are welcome! 🤗
+
 ## Development Environment
 You can easily create the local, test and development environment using helperscripts. Currently the project is only macOS / Linux "friendly", because the helper scripsts are written in shell. I do not plan to implement the project on the "Windows way", because I want to containerise the project in the future.
 
@@ -145,3 +148,34 @@ To run the site you will need...
 - You need to specify the following two secrets in GitHub repository secret HEROKU_API_TOKEN, HEROKU_APP_NAME
 
 ... once you have worked your way through the above settings, the only thing that separates you from deployemnet is running the GitHuba Actions. Based on the CI/CD workflow settings, any commit to the main branch will result in the deployment of the new version if the tests run successfully!
+
+# Export / Import Database
+You can easily import / export data on the administrator site with the help of [Django import / export](https://django-import-export.readthedocs.io/en/latest/) application and library that is added to my project.
+
+Another way to create and restore a backup is to use Django [fixtures](https://docs.djangoproject.com/en/4.0/howto/initial-data/). Currently all applications use the default location of fixutre, which in this case is the fixtures folder in the application folder. It is important to note that data uploading is not automatic from these folder.
+
+Dump all data for backup:
+```bash
+django_portfolio % python djportfolio/manage.py dumpdata --format=json > /djportfolio/djportfolio/fixtures/data.json
+```
+
+Dump data for backup specific application:
+```bash
+django_portfolio % python djportfolio/manage.py dumpdata admin --format=yaml > /djportfolio/djportfolio/fixtures/data.yaml
+```
+
+Dump data for backup specific table:
+```bash
+django_portfolio % python djportfolio/manage.py dumpdata admin admin.logentry --indent=2 --format=xml > /djportfolio/djportfolio/fixtures/data.xml
+```
+
+Load data from vackup:
+```bash
+django_portfolio % python djportfolio/manage.py loaddata /djportfolio/djportfolio/fixtures/data.xml
+```
+
+Dumpdata and restore fresh table in case of IntegrityError:
+```bash
+django_portfolio % python djportfolio/manage.py dumpdata --exclude auth.permission --exclude contenttypes  > /djportfolio/djportfolio/fixtures/db.json
+django_portfolio % python djportfolio/manage.py loaddata /djportfolio/djportfolio/fixtures/db.json
+```

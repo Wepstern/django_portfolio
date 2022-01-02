@@ -24,7 +24,7 @@
                         <div class="col-md-8 px-3">
                             <div class="align-items-start flex-column">
                                 <div class="card-body">
-                                    <h1 class="card-title text-altlight">{{ project.title }}</h1>
+                                    <a href="{{project.link}}"><h1 class="card-title text-altlight">{{ project.title }}</h1></a>
                                     <p class="card-text text-altsecondary overflow-scroll" style="height: 200px;">{{ project.description }}</p>
                                 </div>
                             </div>
@@ -62,7 +62,7 @@
                         <div class="col-md-8 px-3">
                             <div class="align-items-start flex-column">
                                 <div class="card-body">
-                                    <h1 class="card-title text-altlight">{{ project.title }}</h1>
+                                    <a class="text-altlight" href="{{project.link}}"><h1 class="card-title text-altlight">{{ project.title }}</h1></a>
                                     <p class="card-text text-altsecondary overflow-scroll" style="height: 200px;">{{ project.description }}</p>
                                 </div>
                             </div>

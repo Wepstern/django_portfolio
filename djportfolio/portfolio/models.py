@@ -131,6 +131,7 @@ class Project (models.Model):
     preview_image = models.ImageField(blank=True)
     skill = models.ManyToManyField(Skill, blank=True)
     category = models.ManyToManyField(Category, blank=True)
+    link = models.URLField(blank=True)
 
     class Meta:
         ordering = ["-created"]

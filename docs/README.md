@@ -154,27 +154,27 @@ You can easily import / export data on the administrator site with the help of [
 
 Another way to create and restore a backup is to use Django [fixtures](https://docs.djangoproject.com/en/4.0/howto/initial-data/). Currently all applications use the default location of fixutre, which in this case is the fixtures folder in the application folder. It is important to note that data uploading is not automatic from these folders.
 
-Dump all data for backup:
+Dump all data for backup
 ```bash
 django_portfolio % python djportfolio/manage.py dumpdata --format=json > /djportfolio/djportfolio/fixtures/data.json
 ```
 
-Dump data for backup specific application:
+Dump data for backup specific application
 ```bash
 django_portfolio % python djportfolio/manage.py dumpdata admin --format=yaml > /djportfolio/djportfolio/fixtures/data.yaml
 ```
 
-Dump data for backup specific table:
+Dump data for backup specific table
 ```bash
 django_portfolio % python djportfolio/manage.py dumpdata admin admin.logentry --indent=2 --format=xml > /djportfolio/djportfolio/fixtures/data.xml
 ```
 
-Load data from vackup:
+Load data from backup
 ```bash
 django_portfolio % python djportfolio/manage.py loaddata /djportfolio/djportfolio/fixtures/data.xml
 ```
 
-Dumpdata and restore fresh table in case of IntegrityError:
+Dumpdata and restore fresh table in case of IntegrityError
 ```bash
 django_portfolio % python djportfolio/manage.py dumpdata --exclude auth.permission --exclude contenttypes  > /djportfolio/djportfolio/fixtures/db.json
 django_portfolio % python djportfolio/manage.py loaddata /djportfolio/djportfolio/fixtures/db.json

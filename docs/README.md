@@ -98,7 +98,7 @@ scripts % ./runserver.sh
 ```
 
 ## Production Environment
-The site does not perform any computing intensive tasks and I don't need my own domain name at the moment, so I relied on the four services and resources of the following three providers and created the CI/CD process accordingly.
+The site does not perform any computing intensive tasks and I don't need my own domain name at the moment, so I relied on the four free services and resources of the following three providers and created the CI/CD process accordingly.
 
 To run the site you will need...
 - ... a GitHub account to manage source control and CI/CD processes using GitHub Actions.

@@ -53,6 +53,8 @@ def index(request):
             return render(request, 'error.html', context)
         
         projects = Project.objects.filter(author=user)
+        featured_projects = Project.objects.filter(author=user, featured=True)
+        non_featured_projects = Project.objects.filter(author=user, featured=False)
         user_story = UserStory.objects.filter(user=user)
         introductions = Introduction.objects.filter(user=user)
         jobs = Job.objects.filter(user=user)
@@ -69,6 +71,8 @@ def index(request):
         context = {
             'user': user,
             'projects': projects,
+            'featured_projects': featured_projects,
+            'non_featured_projects': non_featured_projects,
             'user_story': user_story,
             'introductions': introductions,
             'jobs': jobs,

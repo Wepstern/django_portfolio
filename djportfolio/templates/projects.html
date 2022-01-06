@@ -5,96 +5,161 @@
         <div>
             <h1 class="text-altlight"><span class="text-altprimary">04. </span>My Projects</h1>
         </div>
-        <div class="gx-0 mb-4 mb-lg-5 align-items-center py-5">        
-        {% for project in projects %}
-            <!-- FEATURED PROJECT -->
-            {% if project.featured is True %}
-                <!-- EVERY SECOND PICTURE ALIGN TO LEFT -->
-                {% if forloop.counter|divisibleby:2 %}
+        <div class="gx-0 mb-4 mb-lg-5 align-items-center py-5">     
+        <!-- FEATURED PROJECT -->
+        {% for project in featured_projects %}
+            <!-- ALIGN TO LEFT -->
+            {% if forloop.counter|divisibleby:2 %}
+            <!-- hide on screens smaller than md -->
+            <div class="d-none d-md-block">
                 <div class="card mb-3 bg-altdark">
-                    <div class="row">
-                        <div class="card-header text-altprimary text-end">
-                            <div class="px-3">
-                                Featured Project
+                    <div class="card-header text-altprimary text-end">
+                        <div class="px-3">
+                            Featured Project
+                        </div>
+                    </div>
+                    <div class="card-body px-0 py-0">
+                        <div class="row">
+                            <div class="col-md-4 align-self-center">
+                                <img src="{{ project.preview_image.url }}" class="img-fluid gs-filter project-picture" alt="Picture of the Project">
                             </div>
-                        </div>
-                        <div class="col-md-4 align-self-center">
-                            <img src="{{ project.preview_image.url }}" class="img-fluid gs-filter project-picture" alt="Picture of the Project">
-                        </div>
-                        <div class="col-md-8 px-3">
-                            <div class="align-items-start flex-column">
-                                <div class="card-body">
-                                    <a class="text-altlight" href="{{project.link}}" target="_new"><h1 class="card-title text-altlight">{{ project.title }}</h1></a>
+                            <div class="col-md-8 px-5 py-3">
+                                <div class="align-items-start flex-column">
+                                    <a class="text-altlight" href="{{project.link}}" target="_new"><h3 class="card-title text-altlight text-end">{{ project.title }}</h3></a>
                                     <p class="card-text text-altsecondary overflow-scroll" style="height: 200px;">{{ project.description }}</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="card-footer bg-altdark text-altprimary">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col text-end">
-                                        {% for skill in project.skill.all %}
-                                        <span class="badge text-altdark bg-altprimary">{{ skill.name }}</span>
-                                        {% endfor %}
-                                        {% for category in project.category.all %}
-                                        <span class="badge text-altdark bg-altprimary">{{ category.name }}</span>
-                                        {% endfor %}
-                                    </div>
+                    </div>
+                    <div class="card-footer bg-altdark text-altprimary">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col text-end">
+                                    {% for skill in project.skill.all %}
+                                    <span class="badge text-altdark bg-altprimary">{{ skill.name }}</span>
+                                    {% endfor %}
+                                    {% for category in project.category.all %}
+                                    <span class="badge text-altdark bg-altprimary">{{ category.name }}</span>
+                                    {% endfor %}
                                 </div>
-                                <div class="row">
-                                    <div class="col text-end">
-                                        <p class="card-text"><small class="text-muted">Posted on {{ project.updated|date:"M d, Y" }}</small></p>    
-                                    </div>
+                            </div>
+                            <div class="row">
+                                <div class="col text-end">
+                                    <p class="card-text"><small class="text-muted">Posted on {{ project.updated|date:"M d, Y" }}</small></p>    
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- EVERY SECOND PICTURE ALIGN TO RIGHT -->
-                {% else %}
+            </div>
+            <!-- hide on md and wider screens-->
+            <div class="d-md-none">
                 <div class="card mb-3 bg-altdark">
-                    <div class="row">
-                        <div class="card-header text-altprimary text-start">
-                            <div class="px-3">
-                                Featured Project
-                            </div>
+                    <div class="card-header text-altprimary text-start">
+                        <div class="px-3">
+                            Featured Project
                         </div>
-                        <div class="col-md-8 px-3">
-                            <div class="align-items-start flex-column">
-                                <div class="card-body">
-                                    <a class="text-altlight" href="{{project.link}}" target="_new"><h1 class="card-title text-altlight">{{ project.title }}</h1></a>
-                                    <p class="card-text text-altsecondary overflow-scroll" style="height: 200px;">{{ project.description }}</p>
+                    </div>
+                    <div class="card-body px-0 py-0">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-8 px-5 py-3">
+                                    <div class="align-items-start flex-column">
+                                            <a class="text-altlight" href="{{project.link}}" target="_new"><h3 class="card-title text-altlight">{{ project.title }}</h3></a>
+                                            <p class="card-text text-altsecondary overflow-scroll" style="height: 200px;">{{ project.description }}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 align-self-center">
+                                    <img src="{{ project.preview_image.url }}" class="img-fluid gs-filter project-picture" alt="Picture of the Project">
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4 align-self-center">
-                            <img src="{{ project.preview_image.url }}" class="img-fluid gs-filter project-picture" alt="Picture of the Project">
-                        </div>
-                        <div class="card-footer bg-altdark text-altprimary">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col text-start">
-                                        {% for skill in project.skill.all %}
-                                        <span class="badge text-altdark bg-altprimary">{{ skill.name }}</span>
-                                        {% endfor %}
-                                        {% for category in project.category.all %}
-                                        <span class="badge text-altdark bg-altprimary">{{ category.name }}</span>
-                                        {% endfor %}
-                                    </div>
+                    </div>
+                    <div class="card-footer bg-altdark text-altprimary">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col text-start">
+                                    {% for skill in project.skill.all %}
+                                    <span class="badge text-altdark bg-altprimary">{{ skill.name }}</span>
+                                    {% endfor %}
+                                    {% for category in project.category.all %}
+                                    <span class="badge text-altdark bg-altprimary">{{ category.name }}</span>
+                                    {% endfor %}
                                 </div>
-                                <div class="row">
-                                    <div class="col text-start">
-                                        <p class="card-text"><small class="text-muted">Posted on {{ project.updated|date:"M d, Y" }}</small></p>    
-                                    </div>
+                            </div>
+                            <div class="row">
+                                <div class="col text-start">
+                                    <p class="card-text"><small class="text-muted">Posted on {{ project.updated|date:"M d, Y" }}</small></p>    
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                {% endif %}
-            <!-- NOT FEATURED PROJECT -->
+            </div>
+            <!-- ALIGN TO RIGHT -->
             {% else %}
+            <div class="card mb-3 bg-altdark">
+                <div class="card-header text-altprimary text-start">
+                    <div class="px-3">
+                        Featured Project
+                    </div>
+                </div>
+                <div class="card-body px-0 py-0">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-8 px-5 py-3">
+                                <div class="align-items-start flex-column">
+                                        <a class="text-altlight" href="{{project.link}}" target="_new"><h3 class="card-title text-altlight">{{ project.title }}</h3></a>
+                                        <p class="card-text text-altsecondary overflow-scroll" style="height: 200px;">{{ project.description }}</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 align-self-center">
+                                <img src="{{ project.preview_image.url }}" class="img-fluid gs-filter project-picture" alt="Picture of the Project">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer bg-altdark text-altprimary">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col text-start">
+                                {% for skill in project.skill.all %}
+                                <span class="badge text-altdark bg-altprimary">{{ skill.name }}</span>
+                                {% endfor %}
+                                {% for category in project.category.all %}
+                                <span class="badge text-altdark bg-altprimary">{{ category.name }}</span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col text-start">
+                                <p class="card-text"><small class="text-muted">Posted on {{ project.updated|date:"M d, Y" }}</small></p>    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             {% endif %}
+        {% endfor %}
+        <!-- NON FEATURED PROJECT -->
+        <div class="row">
+        {% for project in non_featured_projects %}
+            {% if forloop.first %}
+            <h1 class="text-altlight pt-5">Noteworthy Projects</h1>
+            {% endif %}
+            <div class="col-sm-4 pt-3">
+                <div class="card bg-altdark">
+                <div class="card-body text-altsecondary">
+                    <h5 class="card-title text-altlight">{{ project.title }}</h5>
+                    <p class="card-text text-altsecondary overflow-scroll" style="height: 200px;">{{ project.description }}</p>
+                    <a class="btn btn-outline-altprimary" href="{{project.link}}" role="button" target="_new">Show More<i class="bi bi-chevron-right"></i></a>
+                </div>
+                </div>
+        </div>
+        {% endfor %}
+        </div>
+        <!-- EMPTY PROJECT -->
+        {% for project in projects %}
         {% empty %}
         <div>
             <p class="text-warning">No project has been created yet. Please create a project.</p>

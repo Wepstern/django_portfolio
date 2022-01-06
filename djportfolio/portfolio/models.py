@@ -134,7 +134,7 @@ class Project (models.Model):
     link = models.URLField(blank=True)
 
     class Meta:
-        ordering = ["-created"]
+        ordering = ["-featured", "-created"]
 
     def __str__ (self):
         return self.title + " by " + self.author.__str__()
